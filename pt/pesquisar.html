@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricardo da Rocha</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<style>
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+</style>
+
+<body>
+    
+    <div class="bg-white min-h-screen flex flex-col items-center">
+    <header class="w-full flex justify-end p-4 space-x-4 text-sm">
+        <a href="#" class="text-gray-600 hover:underline">Sobre</a>
+        <a href="#" class="text-gray-600 hover:underline">Orçamento</a>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center -mt-20">
+        <div class="mb-8">
+            <span class="text-[#4285F4] text-6xl font-bold">R</span>
+            <span class="text-[#EA4335] text-6xl font-bold">i</span>
+            <span class="text-[#FBBC05] text-6xl font-bold">c</span>
+            <span class="text-[#4285F4] text-6xl font-bold">a</span>
+            <span class="text-[#34A853] text-6xl font-bold">r</span>
+            <span class="text-[#EA4335] text-6xl font-bold">d</span>
+            <span class="text-[#EA4335] text-6xl font-bold">o</span>
+        </div>
+
+        <div class="w-full max-w-2xl px-4">
+            <div class="relative">
+                <input type="text"
+                    class="w-full border border-gray-300 rounded-full py-3 px-5 focus:outline-none focus:shadow-lg">
+                <div class="absolute right-3 top-1/2 transform -translate-y-1/2 flex space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-8 space-x-2">
+                <button class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded text-sm text-gray-800">Pesquisar</button>
+                <button class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded text-sm text-gray-800">Estou com sorte</button>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-sm text-gray-600 max-w-lg px-4">
+            <p>Você está sendo parte da mudança?</p>
+        </div>
+    </main>
+
+    <footer class="w-full bg-gray-100 py-3 px-4">
+        <div class="flex flex-col md:flex-row md:justify-between">
+            <div class="flex justify-center md:justify-start space-x-4 text-sm text-gray-600 mb-2 md:mb-0">
+                <a href="#" class="hover:underline">Manifesto</a>
+                <a href="#" class="hover:underline">Negócios</a>
+                <a href="#" class="hover:underline">Nova geração de sistemas</a>
+            </div>
+            <div class="text-center text-sm text-gray-600 mb-2 md:mb-0">
+                🦀 Junte-se a nós no próximo Curso de Rust
+            </div>
+            <div class="flex justify-center md:justify-end space-x-4 text-sm text-gray-600">
+                <a href="#" class="hover:underline">LGPD</a>
+                <a href="/api" class="hover:underline">Api</a>
+                <a href="#" class="hover:underline">Configurações</a>
+            </div>
+        </div>
+    </footer>
+</div></body>
+
+</html>
