@@ -89,6 +89,7 @@ h2  {
   font-weight: 500;
   margin-top: 40px;
 }
+
 h3  {
   font-size: 20px;
   font-weight: 400;
@@ -293,7 +294,6 @@ abbr:where([title]) {
   float: right;
   margin-top: 15px;
 
-
 }
 
 .sidebar-news h3 {
@@ -303,17 +303,20 @@ abbr:where([title]) {
 .user-info {
   display: flex;
   align-items: center;
+  color: #52525b;
 }
 
 .user-info img {
-  width: 50px;
+  width: 32px;
   border-radius: 48%;
-  margin-right: 15%;
+  margin-right: 6%;
 }
 
 .user-info h3 {
   font-weight: 500;
   margin-bottom: -4px;
+  font-size: 1rem;
+  font-weight: 400;
 
 }
 
@@ -2388,7 +2391,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4rem 2rem;
+  padding: 0rem 2rem;
   gap: 2rem;
   flex-wrap: wrap; 
 
