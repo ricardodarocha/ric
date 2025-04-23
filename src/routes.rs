@@ -66,11 +66,11 @@ pub async fn proj() -> impl Responder {
 }
 
 
-#[get("/milestones")]
+#[get("/milestones.html")]
 pub async fn milestones() -> impl Responder {
     let context = Context::new();
 
-    match Tera::one_off(include_str!("../view/milestones.html"), &context, false) {
+    match Tera::one_off(include_str!("../view/milestones.html.html"), &context, false) {
         Ok(rendered) => HttpResponse::Ok().content_type("text/html").body(rendered),
         Err(err) => {
             eprintln!("Template error: {}", err);
