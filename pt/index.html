@@ -1,191 +1,375 @@
 <!DOCTYPE html>
-<html lang="pt">
+
+<html class="light" lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ricardo da Rocha</title>
-    <link rel="stylesheet" href="../assets/style.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ricardo da Rocha | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-primary": "#f9f5fa",
+                        "on-secondary": "#fbf8fc",
+                        "primary-fixed-dim": "#d6d3d7",
+                        "on-secondary-fixed": "#3f3f42",
+                        "surface-container-highest": "#dde3e7",
+                        "on-primary-fixed": "#3f3f42",
+                        "on-tertiary-container": "#434f66",
+                        "primary-container": "#e4e1e6",
+                        "inverse-on-surface": "#9c9d9e",
+                        "outline-variant": "#adb3b6",
+                        "on-surface": "#2d3336",
+                        "surface-container-low": "#f2f4f5",
+                        "on-secondary-container": "#525155",
+                        "on-primary-fixed-variant": "#5c5b5e",
+                        "surface-container-high": "#e4e9ec",
+                        "surface": "#f9f9fa",
+                        "tertiary-fixed": "#d1ddfa",
+                        "on-error-container": "#782232",
+                        "secondary-fixed-dim": "#d6d3d7",
+                        "on-primary-container": "#525155",
+                        "surface-tint": "#5f5e61",
+                        "surface-container": "#ebeef0",
+                        "error-dim": "#4f0116",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#757c7f",
+                        "on-background": "#2d3336",
+                        "background": "#f9f9fa",
+                        "tertiary": "#535f78",
+                        "on-secondary-fixed-variant": "#5c5b5e",
+                        "on-error": "#fff7f7",
+                        "secondary-container": "#e4e1e5",
+                        "on-primary": "#faf7fb",
+                        "tertiary-container": "#d1ddfa",
+                        "error": "#9e3f4e",
+                        "secondary-fixed": "#e4e1e5",
+                        "on-surface-variant": "#5a6063",
+                        "secondary-dim": "#535356",
+                        "on-tertiary": "#f8f8ff",
+                        "tertiary-dim": "#47536b",
+                        "error-container": "#ff8b9a",
+                        "on-tertiary-fixed": "#303c53",
+                        "primary-dim": "#535255",
+                        "surface-dim": "#d3dbdf",
+                        "surface-bright": "#f9f9fa",
+                        "surface-variant": "#dde3e7",
+                        "tertiary-fixed-dim": "#c3cfeb",
+                        "secondary": "#5f5f62",
+                        "primary": "#5f5e61",
+                        "primary-fixed": "#e4e1e6",
+                        "inverse-surface": "#0c0e0f",
+                        "on-tertiary-fixed-variant": "#4c5870"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9fa;
+        }
+
+        .full-bleed {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+    </style>
 </head>
 
-<body>
-
-    <nav class="navbar">
-        <div class="navbar-left">
-            <a href="/" class="logo"><img src="../assets/icon.png" alt="" srcset=""></a>
+<body class="bg-background text-on-surface">
+    <!-- TopNavBar Component -->
+    <nav
+        class="fixed top-6 left-1/2 -translate-x-1/2 rounded-full px-6 py-2 w-max border border-zinc-200/50 dark:border-zinc-800/50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.02),0_10px_20px_rgba(0,0,0,0.04)] flex items-center gap-8 z-50">
+        <span class="text-lg font-bold tracking-tighter text-zinc-900 dark:text-zinc-50">Ricardo da Rocha</span>
+        <div class="hidden md:flex items-center gap-6">
+            <a class="font-inter tracking-tight text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors duration-200"
+                href="/pt/perfil">Sobre</a>
+            <a class="font-inter tracking-tight text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors duration-200"
+                href="/pt/artigos">Artigos</a>
+            <a class="font-inter tracking-tight text-sm font-medium text-zinc-900 dark:text-zinc-50 font-semibold"
+                href="/pt/projetos">Projetos</a>
+            <a class="font-inter tracking-tight text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors duration-200"
+                href="/pt/cursos">Treinamentos</a>
+            <a class="font-inter tracking-tight text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors duration-200"
+                href="#">Contato</a>
         </div>
-
-        <div class="search-box">
-            <input type="text" name="search" id="search" placeholder="buscar">
-        </div>
-
-        <div class="navbar-center">
-
-            <ul>
-                <li><a href="perfil.html" class="active-link">Currículo</a></li>
-                <li><a href="proj.html">Projetos</a></li>
-                <!-- <li><a href="https://api.whatsapp.com/send?phone=5532984052664&text=Olá+Ricardo%F0%9F%91%8B,+gostaria+de+conversar+sobre">Contato</a></li> -->
-            </ul>
-        </div>
-
-        <div class="navbar-right">
-            <div class="online"> 
-                <img class="nav-profile" src="foto" alt="">
-            </div>
-        </div>
-
-        <div class="profile-menu-wrap" id="profileMenu">
-            <div class="profile-menu">
-                <div class="user-info">
-
-                    <img src="../assets/profil.jpg" alt="">
-                    <h3>Ricardo da Rocha</h3>
-                    <a href="https://www.linkedin.com/in/ricardodarochavitor">in</a>
-                    <a href="https://www.github.com/ricardodarocha">git</a>
+        <button class="scale-95 active:scale-90 transition-transform text-zinc-800 dark:text-zinc-200">
+            <span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+        </button>
+    </nav>
+    <main class="max-w-7xl mx-auto px-8 pt-32 md:pt-48">
+        <!-- Hero Section -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end mb-32">
+            <div class="md:col-span-8">
+                <span
+                    class="inline-block px-3 py-1 rounded-full bg-surface-container text-on-surface-variant text-[0.7rem] font-medium tracking-widest uppercase mb-6">
+                    Desenvolvedor &amp; Designer
+                </span>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-on-surface leading-[1.1] mb-8">
+                    Tecnologia é a ponte.
+                </h1>
+                <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed font-light">
+                    Criatividade e planejamento para conectar pessoas em experiências digitais.
+                </p>
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <button
+                        class="px-8 py-3 bg-primary text-on-primary rounded-lg font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm">
+                        Ver Projetos
+                    </button>
+                    <button
+                        class="px-8 py-3 bg-transparent text-on-surface rounded-lg font-medium transition-all hover:bg-surface-container-high active:scale-95">
+                        Entre em Contato
+                    </button>
                 </div>
             </div>
-        </div>
-
-    </nav>
-
-    <div class="container">
-
-        <section>
-
-            <div class="px-4 py-10 sm:px-6 sm:py-28 lg:px-8 xl:px-28 xl:py-32">
-                <div class="left-land  mx-auto max-w-xl lg:mx-0">
-                    <img src="assets/star.png" class="h-12" aria-hidden="true" alt="">
-                    <h1 class="text-brand mt-10 flex items-center text-sm font-semibold leading-6">
-                        Ricardo da Rocha
-                        <small class="bg-brand/5 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6">
-                            abr/2025
-                        </small>
-                    </h1>
-                    <p class="text-[2rem] mt-4 font-semibold leading-10 tracking-tighter text-zinc-900 text-balance">
-                        Construir, Compartilhar, Conectar
+            <div class="md:col-span-4 relative group">
+                <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container relative">
+                    <img alt="Retrato profissional"
+                        class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                        data-alt="Professional portrait of a creative professional in a minimalist studio setting with soft natural window lighting and a neutral grey background"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgUqJEM0WR7-Dy9a7Ifvd8ve67MfK0TQbB6GLK36NVjKwqxyD7xwNW1sIAmYq4TTexebXJUwCkJ4_aNhfezFxGtt9J-jXrf3SaQH2h-TElFiIKJ4KIcY0D5qc-aWyM9RojaeFYGmLu8vBAwbe4tje7zhfmBiSwFOlQ6_Y0hlxhPpPLnXc0bsx92EwPUKZrHjL_cxdDdFD6svEF-QKnnpIEa_VdChbdR5Fee7ksFOCvVHxIMMDoIZff3o32gtYoru_vCQAD8Ql-_2Y" />
+                </div>
+                <div
+                    class="absolute -bottom-6 -right-6 p-6 bg-surface-container-lowest rounded-xl shadow-xl border border-outline-variant/10 hidden md:block">
+                    <p class="text-[0.65rem] font-bold tracking-widest uppercase text-on-surface-variant mb-1">Status
                     </p>
-                    <p class="mt-4 text-base leading-7 text-zinc-600">
-                        Tecnologia é a ponte <br>
-                        Eu uno criatividade, planejamento e conhecimento <br>para conectar pessoas e futuros
-                    </p>
-                    
-                    <a href="perfil.html"><button class="btn-material">Quem sou</button></a>
-                    <a href="milestones.html"><button class="btn-ghost">Currículo</button></a>
-                    <div class="flex">
-                        <div class="w-full sm:w-auto">
-                            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-3">
-                                <a href="#formacao"
-                                    class="group relative rounded-2xl px-6 py-4 text-sm font-semibold leading-6 text-zinc-900 sm:py-6">
-                                    <span
-                                        class="absolute inset-0 rounded-2xl bg-zinc-50 transition group-hover:bg-zinc-100 sm:group-hover:scale-105">
-                                    </span>
-                                    <span class="relative flex items-center gap-4 sm:flex-col">
-                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6">
-                                            <path d="m12 4 10-2v18l-10 2V4Z" fill="#18181B" fill-opacity=".15"></path>
-                                            <path d="M12 4 2 2v18l10 2m0-18v18m0-18 10-2v18l-10 2" stroke="#18181B"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                        Formação
-                                    </span>
-                                </a>
-                                <a href="proj.html"
-                                    class="group relative rounded-2xl px-6 py-4 text-sm font-semibold leading-6 text-zinc-900 sm:py-6">
-                                    <span
-                                        class="absolute inset-0 rounded-2xl bg-zinc-50 transition group-hover:bg-zinc-100 sm:group-hover:scale-105">
-                                    </span>
-                                    <span class="relative flex items-center gap-4 sm:flex-col">
-                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6">
-                                            <path d="M12 1v6M12 17v6" stroke="#18181B" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"></path>
-                                            <circle cx="12" cy="12" r="4" fill="#18181B" fill-opacity=".15"
-                                                stroke="#18181B" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></circle>
-                                        </svg>
-                                        Projetos
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="mt-10 grid grid-cols-1 gap-y-4 text-sm leading-6 text-zinc-700 sm:grid-cols-2">
-                                <div>
-                                    <a href="https://www.linkedin.com/in/ricardodarochavitor"
-                                        class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-zinc-50 hover:text-zinc-900">
-                                        <svg viewBox="0 0 16 16" aria-hidden="true"
-                                            class="h-4 w-4 fill-zinc-400 group-hover:fill-zinc-600">
-                                            <path
-                                                d="M5.403 14c5.283 0 8.172-4.617 8.172-8.62 0-.131 0-.262-.008-.391A6.033 6.033 0 0 0 15 3.419a5.503 5.503 0 0 1-1.65.477 3.018 3.018 0 0 0 1.263-1.676 5.579 5.579 0 0 1-1.824.736 2.832 2.832 0 0 0-1.63-.916 2.746 2.746 0 0 0-1.821.319A2.973 2.973 0 0 0 8.076 3.78a3.185 3.185 0 0 0-.182 1.938 7.826 7.826 0 0 1-3.279-.918 8.253 8.253 0 0 1-2.64-2.247 3.176 3.176 0 0 0-.315 2.208 3.037 3.037 0 0 0 1.203 1.836A2.739 2.739 0 0 1 1.56 6.22v.038c0 .7.23 1.377.65 1.919.42.54 1.004.912 1.654 1.05-.423.122-.866.14-1.297.052.184.602.541 1.129 1.022 1.506a2.78 2.78 0 0 0 1.662.598 5.656 5.656 0 0 1-2.007 1.074A5.475 5.475 0 0 1 1 12.64a7.827 7.827 0 0 0 4.403 1.358">
-                                            </path>
-                                        </svg>
-                                        Linkedin
-                                    </a>
-                                </div>
-
-                                <div>
-                                    <a href="https://api.whatsapp.com/send?phone=5532984052664&text=Olá+Ricardo%F0%9F%91%8B,+gostaria+de+conversar+sobre"
-                                        class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-zinc-50 hover:text-zinc-900">
-                                        <svg viewBox="0 0 16 16" aria-hidden="true"
-                                            class="h-4 w-4 fill-zinc-400 group-hover:fill-zinc-600">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M6.356 2.007a.75.75 0 0 1 .637.849l-1.5 10.5a.75.75 0 1 1-1.485-.212l1.5-10.5a.75.75 0 0 1 .848-.637ZM11.356 2.008a.75.75 0 0 1 .637.848l-1.5 10.5a.75.75 0 0 1-1.485-.212l1.5-10.5a.75.75 0 0 1 .848-.636Z">
-                                            </path>
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M14 5.25a.75.75 0 0 1-.75.75h-9.5a.75.75 0 0 1 0-1.5h9.5a.75.75 0 0 1 .75.75ZM13 10.75a.75.75 0 0 1-.75.75h-9.5a.75.75 0 0 1 0-1.5h9.5a.75.75 0 0 1 .75.75Z">
-                                            </path>
-                                        </svg>
-                                        Whatsapp
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="www.agencia4d.com.br"
-                                        class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-zinc-50 hover:text-zinc-900">
-                                        <svg viewBox="0 0 16 16" aria-hidden="true"
-                                            class="h-4 w-4 fill-zinc-400 group-hover:fill-zinc-600">
-                                            <path
-                                                d="M13.545 2.995c-1.02-.46-2.114-.8-3.257-.994a.05.05 0 0 0-.052.024c-.141.246-.297.567-.406.82a12.377 12.377 0 0 0-3.658 0 8.238 8.238 0 0 0-.412-.82.052.052 0 0 0-.052-.024 13.315 13.315 0 0 0-3.257.994.046.046 0 0 0-.021.018C.356 6.063-.213 9.036.066 11.973c.001.015.01.029.02.038a13.353 13.353 0 0 0 3.996 1.987.052.052 0 0 0 .056-.018c.308-.414.582-.85.818-1.309a.05.05 0 0 0-.028-.069 8.808 8.808 0 0 1-1.248-.585.05.05 0 0 1-.005-.084c.084-.062.168-.126.248-.191a.05.05 0 0 1 .051-.007c2.619 1.176 5.454 1.176 8.041 0a.05.05 0 0 1 .053.006c.08.065.164.13.248.192a.05.05 0 0 1-.004.084c-.399.23-.813.423-1.249.585a.05.05 0 0 0-.027.07c.24.457.514.893.817 1.307a.051.051 0 0 0 .056.019 13.31 13.31 0 0 0 4.001-1.987.05.05 0 0 0 .021-.037c.334-3.396-.559-6.345-2.365-8.96a.04.04 0 0 0-.021-.02Zm-8.198 7.19c-.789 0-1.438-.712-1.438-1.587 0-.874.637-1.586 1.438-1.586.807 0 1.45.718 1.438 1.586 0 .875-.637 1.587-1.438 1.587Zm5.316 0c-.788 0-1.438-.712-1.438-1.587 0-.874.637-1.586 1.438-1.586.807 0 1.45.718 1.438 1.586 0 .875-.63 1.587-1.438 1.587Z">
-                                            </path>
-                                        </svg>
-                                        Agência 4D
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="www.pedidonanuvem.com.br"
-                                        class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-zinc-50 hover:text-zinc-900">
-                                        <svg viewBox="0 0 20 20" aria-hidden="true"
-                                            class="h-4 w-4 fill-zinc-400 group-hover:fill-zinc-600">
-                                            <path
-                                                d="M1 12.5A4.5 4.5 0 005.5 17H15a4 4 0 001.866-7.539 3.504 3.504 0 00-4.504-4.272A4.5 4.5 0 004.06 8.235 4.502 4.502 0 001 12.5z">
-                                            </path>
-                                        </svg>
-                                        Pedido na Nuvem
-                                    </a>
-                                </div>
-
-                                <div>
-                                    <a href="rust.html"
-                                        class="group -mx-2 -my-0.5 inline-flex items-center gap-3 rounded-lg px-2 py-0.5 hover:bg-zinc-50 hover:text-zinc-900">
-                                        <img src="../assets/ferris.svg" style="height: 15px" alt="">
-                                        Curso de Rust
-                                    </a>
-                                </div>
-
-
-                            </div>
-                        </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-sm font-medium text-on-surface">Disponível para Projetos</span>
                     </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="../assets/land.png" alt="">
-            </div>
-
         </section>
-
-        <div class="float-button">
-            <a href="https://api.whatsapp.com/send?phone=5532984052664&text=Olá+Ricardo%F0%9F%91%8B,+gostaria+de+conversar+sobre">
-                <img src="../assets/wap.svg" style="height: 100%" alt="">
-            </a>
+        <!-- Gallery Section (Full Bleed) -->
+        <section class="mb-32">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight text-on-surface">Curadoria de Projetos</h2>
+                    <p class="text-on-surface-variant mt-2 max-w-md">Uma seleção de trabalhos que definem minha
+                        abordagem estética e técnica.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="w-12 h-12 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button
+                        class="w-12 h-12 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+            <div class="full-bleed overflow-x-auto no-scrollbar flex gap-8 px-8 pb-8">
+                <!-- Gallery Item 1 -->
+                <div class="flex-none w-[300px] md:w-[600px] group cursor-pointer">
+                    <div class="aspect-[16/10] rounded-xl overflow-hidden bg-surface-container-high relative mb-6">
+                        <img alt="Interface de App"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="Plataforma educacional interativa. Deafio App Challeng Nasa + Univ Campinas "
+                            src="/assets/img/nasa.PNG" />
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-medium text-on-surface-variant uppercase tracking-widest mb-1">
+                                Design de Interface</p>
+                            <h3 class="text-xl font-bold text-on-surface">Plataforma Eclipse Force</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_outward</span>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="flex-none w-[300px] md:w-[450px] group cursor-pointer">
+                    <div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-high relative mb-6">
+                        <img alt="Identidade Visual"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="Abstract geometric art with fluid 3D shapes in monochrome tones of grey and white with soft realistic shadows"
+                            src="/assets/img/highway.jpg" />
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-medium text-on-surface-variant uppercase tracking-widest mb-1">
+                                Branding</p>
+                            <h3 class="text-xl font-bold text-on-surface">Marca Highway Sistemas</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_outward</span>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="flex-none w-[300px] md:w-[550px] group cursor-pointer">
+                    <div class="aspect-[16/9] rounded-xl overflow-hidden bg-surface-container-high relative mb-6">
+                        <img alt="Tech Hardware"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            data-alt="Modern tech workspace with mechanical keyboard, minimalist mouse and a sleek monitor showing code on a walnut wood desk"
+                            src="/assets/img/selo.png" />
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-medium text-on-surface-variant uppercase tracking-widest mb-1">
+                                VOKUIN</p>
+                            <h3 class="text-xl font-bold text-on-surface">Selo Vokuin de desenvolvimento comunitário</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_outward</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services/Approach Bento Grid -->
+        <section class="mb-32">
+            <h2 class="text-3xl font-bold tracking-tight text-on-surface mb-12">Como trabalho</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <!-- Large Card -->
+                <div
+                    class="md:col-span-2 md:row-span-2 p-8 rounded-xl bg-surface-container-low border border-outline-variant/10 flex flex-col justify-between aspect-square md:aspect-auto">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-primary">architecture</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-on-surface mb-4">Arquitetura de Sistemas</h3>
+                        <p class="text-on-surface-variant leading-relaxed">Construindo bases sólidas e escaláveis para
+                            produtos que precisam crescer. Do planejamento de banco de dados ao deployment automatizado.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span
+                            class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-[0.65rem] font-bold uppercase">React</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-[0.65rem] font-bold uppercase">Node.js</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-[0.65rem] font-bold uppercase">PostgreSQL</span>
+                    </div>
+                </div>
+                <!-- Small Card 1 -->
+                <div
+                    class="p-8 rounded-xl bg-surface-container border border-outline-variant/10 group hover:bg-surface-container-high transition-colors">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-on-surface">palette</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-on-surface mb-2">Design Editorial</h4>
+                    <p class="text-sm text-on-surface-variant">Estética limpa e funcional inspirada em design gráfico
+                        suíço.</p>
+                </div>
+                <!-- Small Card 2 -->
+                <div
+                    class="p-8 rounded-xl bg-surface-container border border-outline-variant/10 group hover:bg-surface-container-high transition-colors">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-on-surface">speed</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-on-surface mb-2">Performance</h4>
+                    <p class="text-sm text-on-surface-variant">Otimização máxima para carregamento instantâneo em
+                        qualquer rede.</p>
+                </div>
+                <!-- Wide Card -->
+                <div class="md:col-span-2 p-8 rounded-xl bg-primary text-on-primary flex items-center gap-8">
+                    <div class="hidden sm:block">
+                        <span class="material-symbols-outlined text-4xl"
+                            style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Inovação em cada pixel</h3>
+                        <p class="text-on-primary/80 text-sm leading-relaxed">Combinando as tecnologias mais recentes
+                            com princípios de UX atemporais para criar o futuro hoje.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section
+            class="py-24 rounded-3xl bg-surface-container-high border border-outline-variant/20 overflow-hidden relative text-center">
+            <div class="relative z-10 px-8">
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tighter text-on-surface mb-6">Construir,
+                    Compartilhar, Conectar</h2>
+                <p class="text-lg text-on-surface-variant max-w-xl mx-auto mb-10">Vamos tirar sua ideia do papel e
+                    transformá-la em uma solução digital de alto impacto?</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button
+                        class="px-10 py-4 bg-on-surface text-surface rounded-full font-bold shadow-lg active:scale-95 transition-transform">
+                        Iniciar um Projeto
+                    </button>
+                    <button
+                        class="px-10 py-4 border border-on-surface/20 rounded-full font-bold hover:bg-on-surface/5 active:scale-95 transition-transform">
+                        Ver Currículo
+                    </button>
+                </div>
+            </div>
+            <!-- Decorative background elements -->
+            <div
+                class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-primary/5 rounded-full blur-3xl">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-tertiary/5 rounded-full blur-3xl">
+            </div>
+        </section>
+    </main>
+    <!-- Footer Component -->
+    <footer class="bg-zinc-50 dark:bg-zinc-900/50 full-width py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="font-inter text-xs tracking-wide uppercase text-zinc-600 dark:text-zinc-400">© 2024 Construir,
+                Compartilhar, Conectar</p>
+            <div class="flex gap-8">
+                <a class="font-inter text-xs tracking-wide uppercase text-zinc-500 dark:text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 underline opacity-80 hover:opacity-100 transition-opacity"
+                    href="#">Currículo</a>
+                <a class="font-inter text-xs tracking-wide uppercase text-zinc-500 dark:text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 underline opacity-80 hover:opacity-100 transition-opacity"
+                    href="#">Training</a>
+                <a class="font-inter text-xs tracking-wide uppercase text-zinc-900 dark:text-zinc-100 underline decoration-zinc-400 opacity-80 hover:opacity-100 transition-opacity"
+                    href="#">Projects</a>
+                <a class="font-inter text-xs tracking-wide uppercase text-zinc-500 dark:text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 underline opacity-80 hover:opacity-100 transition-opacity"
+                    href="#">Blog</a>
+            </div>
+            <div class="flex gap-4">
+                <a class="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors" href="#">
+                    <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                        </path>
+                    </svg>
+                </a>
+                <a class="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors" href="#">
+                    <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
         </div>
-    </div>
-
+    </footer>
 </body>
 
 </html>
