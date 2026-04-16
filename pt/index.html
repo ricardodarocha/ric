@@ -9,6 +9,10 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
         rel="stylesheet" />
+       
+    <script src="nav.js" defer></script>
+
+
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
@@ -106,7 +110,8 @@
 
 <body class="bg-background text-on-surface">
     <!-- TopNavBar Component -->
-    <nav
+    <app-nav></app-nav>
+    <!-- <nav
         class="fixed top-6 left-1/2 -translate-x-1/2 rounded-full px-6 py-2 w-max border border-zinc-200/50 dark:border-zinc-800/50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.02),0_10px_20px_rgba(0,0,0,0.04)] flex items-center gap-8 z-50">
         <span class="text-lg font-bold tracking-tighter text-zinc-900 dark:text-zinc-50">Ricardo da Rocha</span>
         <div class="hidden md:flex items-center gap-6">
@@ -115,7 +120,7 @@
             <a class="font-inter tracking-tight text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors duration-200"
                 href="/pt/artigos">Artigos</a>
             <a class="font-inter tracking-tight text-sm font-medium text-zinc-900 dark:text-zinc-50 font-semibold"
-                href="/pt/projetos">Projetos</a>
+                href="/pt/galeria">Projetos</a>
             <a class="font-inter tracking-tight text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors duration-200"
                 href="/pt/cursos">Treinamentos</a>
             <a class="font-inter tracking-tight text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors duration-200"
@@ -124,7 +129,7 @@
         <button class="scale-95 active:scale-90 transition-transform text-zinc-800 dark:text-zinc-200">
             <span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
         </button>
-    </nav>
+    </nav> -->
     <main class="max-w-7xl mx-auto px-8 pt-32 md:pt-48">
         <!-- Hero Section -->
         <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end mb-32">
@@ -137,13 +142,13 @@
                     Tecnologia é a ponte.
                 </h1>
                 <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed font-light">
-                    Criatividade e planejamento para conectar pessoas em experiências digitais.
+                    Gosto de conectar pessoas em experiências digitais.
                 </p>
-                <div class="mt-10 flex flex-wrap gap-4">
-                    <button
-                        class="px-8 py-3 bg-primary text-on-primary rounded-lg font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm">
+                    <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="/pt/galeria"
+                        class="inline-block px-8 py-3 bg-primary text-on-primary rounded-lg font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm">
                         Ver Projetos
-                    </button>
+                    </a>
                     <button
                         class="px-8 py-3 bg-transparent text-on-surface rounded-lg font-medium transition-all hover:bg-surface-container-high active:scale-95">
                         Entre em Contato

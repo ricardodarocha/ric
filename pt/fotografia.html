@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Sistemas & Design | Portfolio Ricardo da Rocha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="nav.js" defer></script>
+
+    <style>
+        /* ========================================================
+           RESET & VARIÁVEIS
+           ======================================================== */
+        :root {
+            --bg-color: #030303;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --grid-gap: 4px;
+            /* Espaço minimalista entre as fotos */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ========================================================
+           CABEÇALHO MINIMALISTA
+           ======================================================== */
+        header {
+            padding: 60px 20px 40px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+            color: var(--text-secondary);
+        }
+
+        h1 strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ========================================================
+           GALERIA MOSAICO (CSS GRID)
+           ======================================================== */
+        .gallery-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .mosaic {
+            display: grid;
+            /* Cria colunas responsivas que se adaptam ao tamanho da tela */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Altura base para os blocos */
+            grid-auto-rows: 280px;
+            /* Dense faz o grid preencher espaços vazios inteligentemente */
+            grid-auto-flow: dense;
+            gap: var(--grid-gap);
+        }
+
+        /* ========================================================
+           ITENS DA GALERIA & CLASSES DE TAMANHO
+           ======================================================== */
+        .mosaic-item {
+            position: relative;
+            border-radius: 4px;
+            /* Leve arredondamento para elegância */
+            overflow: hidden;
+            cursor: pointer;
+            background-color: #111;
+            /* Transição para quando o item perde o foco no hover global */
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mosaic-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Efeito de zoom muito suave */
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: block;
+        }
+
+        /* Proporções variadas para quebrar a monotonia */
+        .item-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .item-wide {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .item-tall {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+
+        /* ========================================================
+           OVERLAY DE TEXTO (Escondido por padrão)
+           ======================================================== */
+        .item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .item-overlay span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        .item-overlay h2 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+            transition-delay: 0.05s;
+        }
+
+        /* ========================================================
+           EXPERIÊNCIA DE USUÁRIO (UX) - EFEITOS DE HOVER
+           ======================================================== */
+        @media (min-width: 1024px) {
+
+            /* Quando a galeria inteira recebe hover, escurece todos os itens... */
+            .mosaic:hover .mosaic-item {
+                opacity: 0.25;
+                filter: grayscale(50%);
+            }
+
+            /* ...exceto o item que está especificamente com o mouse em cima */
+            .mosaic .mosaic-item:hover {
+                opacity: 1;
+                filter: grayscale(0%);
+                z-index: 2;
+            }
+
+            .mosaic-item:hover img {
+                transform: scale(1.03);
+            }
+
+            .mosaic-item:hover .item-overlay {
+                opacity: 1;
+            }
+
+            .mosaic-item:hover .item-overlay span,
+            .mosaic-item:hover .item-overlay h2 {
+                transform: translateY(0);
+            }
+        }
+
+        /* ========================================================
+           RESPONSIVIDADE (MOBILE)
+           ======================================================== */
+        @media (max-width: 768px) {
+            .mosaic {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 350px;
+                /* Mais alto no celular para focar na foto */
+                gap: 8px;
+            }
+
+            /* Desativa os spans no mobile, empilhando tudo em 1 coluna */
+            .item-large,
+            .item-wide,
+            .item-tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            /* No celular, exibe o texto sempre, já que não há "hover" */
+            .item-overlay {
+                opacity: 1;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 40%);
+            }
+
+            .item-overlay span,
+            .item-overlay h2 {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+<app-nav></app-nav>
+
+    <header>
+        <h1><strong>Sistemas & Formas</strong> / Arquitetura Visual</h1>
+    </header>
+
+    <main class="gallery-container">
+        <div class="mosaic">
+
+            <article class="mosaic-item item-large">    
+                <img src="/assets/img/nasa.PNG" alt="Plataforma Eclipse Force em parceria com Universidade de Campinas - Um desafio Nasa | Saiba mais  App Challenge Nasa">
+                <div class="item-overlay">
+                    <span>DESIGN DE INTERFACE</span>
+                    <h2>Plataforma Eclipse Force</h2>
+                </div>
+            </article>
+
+            <article class="mosaic-item">
+                <img src="/assets/img/crab1.png" alt="Conexões de rede">
+                <div class="item-overlay">
+                    <span>TREINAMENTO</span>
+                    <h2>Mentoria de Rust</h2>
+                </div>
+            </article>
+
+            <article class="mosaic-item item-tall">
+                <img src="/assets/img/Educator.jpg" alt="Cores no código">
+                <div class="item-overlay">
+                    <span>Plano de Aula</span>
+                    <h2>Acessibilidade e Inclusão no ensino de ciências</h2>
+                </div>
+            </article>
+
+            <article class="mosaic-item item-wide">
+                <img src="https://picsum.photos/id/119/800/400" alt="Hardware e hardware abstraction">
+                <div class="item-overlay">
+                    <span>Hardware</span>
+                    <h2>Abstração Física</h2>
+                </div>
+            </article>
+
+            <article class="mosaic-item">
+                <img src="https://picsum.photos/id/319/400/400" alt="Design UI/UX">
+                <div class="item-overlay">
+                    <span>FOTOGRAFIA</span>
+                    <h2>Conheça meu portfólio de fotografia</h2>
+                </div>
+            </article>
+
+            <article class="mosaic-item">
+                <img src="https://picsum.photos/id/366/400/400" alt="Lógica fluida">
+                <div class="item-overlay">
+                    <span>Backend</span>
+                    <h2>Fluidez de Dados</h2>
+                </div>
+            </article>
+
+            <article class="mosaic-item item-large">
+                <img src="https://picsum.photos/id/164/800/800" alt="Linguagem de máquina moderna">
+                <div class="item-overlay">
+                    <span>Arquitetura</span>
+                    <h2>Simetria de Sistemas</h2>
+                </div>
+            </article>
+
+            <article class="mosaic-item item-wide">
+                <img src="https://picsum.photos/id/212/800/400" alt="Microserviços em luz">
+                <div class="item-overlay">
+                    <span>Deploy</span>
+                    <h2>Reflexos do Cloud</h2>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+</body>
+
+</html>
