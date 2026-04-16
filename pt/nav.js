@@ -102,8 +102,8 @@ class NavigationBar extends HTMLElement {
                 <a href="/" class="brand">Ricardo da Rocha</a>
                 <div class="links">
                     <a href="/pt/perfil">Sobre</a>
-                    <a href="#projetos">Projetos</a>
-                    <a href="#contato">Contato</a>
+                    <a href="/pt/galeria">Projetos</a>
+                    <a href="https://api.whatsapp.com/send?phone=5532984052664&text=Ol%C3%A1+Ricardo%F0%9F%91%8B,+gostaria+de+conversar+sobre+">Contato</a>
                 </div>
                 <button class="theme-toggle" aria-label="Mudar tema">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

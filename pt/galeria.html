@@ -26,6 +26,16 @@
             box-sizing: border-box;
         }
 
+        a:visited {
+            color: inherit;
+        }
+
+        /* Garante que o link não tenha sublinhado por padrão */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
@@ -224,13 +234,14 @@
     <main class="gallery-container">
         <div class="mosaic">
 
-            <article class="mosaic-item item-large">    
+            <a href="https://eclipse-force.vercel.app/" target="_blank" rel="noopener noreferrer"
+                class="text-white no-underline mosaic-item  item-large block aspect-[16/10] rounded-xl overflow-hidden bg-surface-container-high relative mb-6">
                 <img src="/assets/img/nasa.PNG" alt="Plataforma Eclipse Force em parceria com Universidade de Campinas - Um desafio Nasa | Saiba mais  App Challenge Nasa">
                 <div class="item-overlay">
                     <span>DESIGN DE INTERFACE</span>
                     <h2>Plataforma Eclipse Force</h2>
                 </div>
-            </article>
+            </a>
 
             <article class="mosaic-item">
                 <img src="/assets/img/crab1.png" alt="Conexões de rede">
@@ -287,7 +298,7 @@
                     <h2>Festival Gastronômico de Guidoval</h2>
                 </div>
             </article><article class="mosaic-item">
-                <img src="/assets/img/Th.PNG" alt="Análise de Grades de Ligas Metálicas">
+                <img src="/assets/img/Th.PNG" alt="Análise de Grades de Ligas">
                 <div class="item-overlay">
                     <span>APP</span>
                     <h2>Sistema de Estoque para de Ligas de Aço</h2>
