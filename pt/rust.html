@@ -228,6 +228,198 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </header>
 
+        <section class="max-w-5xl mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl text-accent mb-6 border-b border-orange-300 pb-4 inline-block">Por que Rust?</h2>
+                <h3 class="text-2xl mb-4 fantasy-font">O Problema que Ela Resolve</h3>
+                <p class="text-lg leading-relaxed mb-4">
+                    Rust não é apenas mais uma linguagem; é uma mudança de paradigma. Para engenheiros de software seniores, os maiores inimigos sempre foram <strong>vazamentos de memória, data races e a sobrecarga de Garbage Collectors</strong>.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Com o seu <em>Borrow Checker</em> implacável, Rust garante segurança de memória em tempo de compilação. É o poder e a velocidade de C/C++ combinados com a segurança de linguagens modernas, permitindo o desenvolvimento de sistemas complexos, APIs hiper-rápidas e jogos imersivos sem sacrificar noites de sono debugando falhas silenciosas.
+                </p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-2xl transform rotate-1 border border-gray-700">
+                <pre class="text-green-400 font-mono text-sm overflow-x-auto"><code>fn forjar_maestria() -&gt; Result&lt;Especialista, Erro&gt; {
+    let mut desenvolvedor = Desenvolvedor::new();
+    
+    // Sem data races. Sem segfaults.
+    desenvolvedor.aprender(Rust::Ownership)?;
+    desenvolvedor.dominar(Rust::Lifetimes)?;
+    
+    Ok(Especialista::from(desenvolvedor))
+}</code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+        <section class="max-w-6xl mx-auto px-6 py-16 relative">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl text-accent mb-4">A Jornada do Código</h2>
+            <p class="text-xl max-w-2xl mx-auto">Uma saga dividida em 8 tomos de conhecimento. Clique nos pergaminhos abaixo para revelar os segredos de cada semana.</p>
+        </div>
+
+        <div class="saga-grid">
+            <!-- Week 1 -->
+            <div class="saga-card" onclick="toggleCard(this)">
+                <div class="flex justify-between items-center">
+                    <h3>I. O Despertar</h3>
+                    <span class="text-accent fantasy-font text-2xl">+</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 1</div>
+                <div class="card-content">
+                    <p class="font-bold mb-2">Instalação, configuração e plataformas (Windows, iOS, Linux, WSL)</p>
+                    <ul>
+                        <li><strong>Aula 1:</strong> cargo cli, cargo new, cargo add. Criação do primeiro programa, Gerenciamento de Dependências, cargo run.</li>
+                        <li><strong>Aula 2 (Bônus):</strong> Estudando por conta, Rust Playground, repositório do curso, repositórios de exemplos e livros.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 2 -->
+            <div class="saga-card" onclick="toggleCard(this)">
+                <div class="flex justify-between items-center">
+                    <h3>II. A Base Sólida</h3>
+                    <span class="text-accent fantasy-font text-2xl">+</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 2</div>
+                <div class="card-content">
+                    <ul>
+                        <li>Comandos profundos: <code>cargo build</code></li>
+                        <li>Entendendo o diretório <code>target</code></li>
+                        <li>Distribuição de binários</li>
+                        <li>Criação de CLIs eficientes</li>
+                        <li>Como funciona o fluxo de programação em Rust</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 3 -->
+            <div class="saga-card" onclick="toggleCard(this)">
+                <div class="flex justify-between items-center">
+                    <h3>III. A Forja da Produtividade</h3>
+                    <span class="text-accent fantasy-font text-2xl">+</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 3</div>
+                <div class="card-content">
+                    <ul>
+                        <li>Paradigmas e Boas práticas idiomáticas</li>
+                        <li>Domínio de <code>Structs</code></li>
+                        <li>O poder oculto das <code>Macros</code></li>
+                        <li>Construindo aplicações robustas com <code>clap</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 4 -->
+            <div class="saga-card" onclick="toggleCard(this)">
+                <div class="flex justify-between items-center">
+                    <h3>IV. O Pergaminho dos Tipos</h3>
+                    <span class="text-accent fantasy-font text-2xl">+</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 4</div>
+                <div class="card-content">
+                    <ul>
+                        <li>Tipos de Dados primitivos</li>
+                        <li>Tipos escalares</li>
+                        <li>O poder algebraico dos <code>Enums</code></li>
+                        <li>Flexibilidade com <code>Generics</code></li>
+                        <li>Ausência de nulos: Tratando <code>Option</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 5 -->
+            <div class="saga-card" onclick="toggleCard(this)">
+                <div class="flex justify-between items-center">
+                    <h3>V. A Armadura Absoluta</h3>
+                    <span class="text-accent fantasy-font text-2xl">+</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 5 (Segurança)</div>
+                <div class="card-content">
+                    <ul>
+                        <li>Enfrentando o <strong>Borrow Checker</strong></li>
+                        <li>As leis de <strong>Ownership</strong></li>
+                        <li>Dominando <strong>Lifetimes</strong> sem medo</li>
+                        <li>Tratamento implacável: Panic, erros e <code>Result&lt;T, E&gt;</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 6 -->
+            <div class="saga-card" onclick="toggleCard(this)">
+                <div class="flex justify-between items-center">
+                    <h3>VI. O Labirinto</h3>
+                    <span class="text-accent fantasy-font text-2xl">+</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 6</div>
+                <div class="card-content">
+                    <ul>
+                        <li>Loops, controle de fluxo avançado</li>
+                        <li>Iteradores funcionais e Zero-Cost Abstraction</li>
+                        <li><strong>Projeto:</strong> Construindo um game básico com <code>ggez</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 7 -->
+            <div class="saga-card" onclick="toggleCard(this)">
+                <div class="flex justify-between items-center">
+                    <h3>VII. Os Registros Antigos</h3>
+                    <span class="text-accent fantasy-font text-2xl">+</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 7</div>
+                <div class="card-content">
+                    <ul>
+                        <li>Lidando com arquivos de sistema</li>
+                        <li>Escrita, leitura e parse simples de dados</li>
+                        <li>Argumentos e parâmetros (cfg flags)</li>
+                        <li>Mapeando dados: Tuplas e Listas (Vetores)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 8 -->
+            <div class="saga-card" onclick="toggleCard(this)">
+                <div class="flex justify-between items-center">
+                    <h3>VIII. Bem-vindo ao Futuro</h3>
+                    <span class="text-accent fantasy-font text-2xl">+</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 8</div>
+                <div class="card-content">
+                    <p class="font-bold mb-2">Você nunca mais será o mesmo.</p>
+                    <ul>
+                        <li>Introdução a serialização e desserialização com <code>serde_json</code></li>
+                        <li>Dicas sobre a comunidade Rust</li>
+                        <li>Navegando em crates.io</li>
+                        <li>Mergulho nos ecossistemas avançados (SQLx, Diesel, SeaORM)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="bg-[#e8dbc8] py-16 border-t border-b border-[#d8c8b8]">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl text-accent mb-8">O que vem a seguir?</h2>
+            <p class="text-xl mb-8">O céu é o limite. Ao finalizar esta saga, você terá as ferramentas para desbravar qualquer domínio da engenharia de software.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8 fantasy-font font-bold text-lg">
+                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* Web *</div>
+                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* Banco de Dados *</div>
+                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* S.O. *</div>
+                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* Jogos *</div>
+                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* UI *</div>
+            </div>
+
+            <p class="text-gray-700 italic">Discutiremos planos de carreira, métodos de estudo contínuo e ajudaremos você a escolher o próximo passo. Qual caminho você irá seguir?</p>
+        </div>
+    </section>
+
+        
+
         <!-- features section -->
         <section class="py-6" id="features">
             <div class="container">
@@ -594,5 +786,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.5.0/feather.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
         <script src="js/scripts.js"></script>
+
+                                <section id="reservar" class="max-w-3xl mx-auto px-6 py-20 text-center">
+        <h2 class="text-4xl mb-6 fantasy-font">Reivindique seu Lugar na Távola</h2>
+        <p class="text-lg mb-8">O ecossistema Rust cresce exponencialmente, mas os mestres ainda são raros. Antecipe-se.</p>
+        
+        <div class="bg-white p-8 rounded-lg shadow-lg border border-[#e2d5c8] relative">
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest shadow-md">
+                Fila de Espera
+            </div>
+            <h3 class="text-2xl mb-4 font-bold text-gray-800">Este curso ainda não tem vagas disponíveis.</h3>
+            <p class="text-gray-600 mb-8">Reserve sua vaga e seja notificado em primeira mão quando os portões se abrirem.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Vaga reservada na fila de espera! Você será notificado.');" class="flex flex-col md:flex-row gap-4 justify-center">
+                <input type="email" placeholder="Seu melhor e-mail" required="" class="px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-orange-500 flex-grow md:max-w-xs">
+                <button type="submit" class="btn-epic !text-base !py-3">Reservar Minha Vaga</button>
+            </form>
+        </div>
+    </section>
+<footer class="text-center py-8 text-sm text-gray-500 border-t border-[#d8c8b8] mt-12">
+        <p class="fantasy-font">© 2026 Masterclass Rust - A Saga. Todos os direitos reservados.</p>
+    </footer>
+
+                                <script>
+        // JS simples para o efeito de acordeão dos cards (Saga)
+        function toggleCard(element) {
+            // Fechar os outros
+            const allCards = document.querySelectorAll('.saga-card');
+            allCards.forEach(card => {
+                if(card !== element) {
+                    card.classList.remove('active');
+                    card.querySelector('span').innerText = '+';
+                }
+            });
+
+            // Alternar o atual
+            element.classList.toggle('active');
+            const icon = element.querySelector('span');
+            if(element.classList.contains('active')) {
+                icon.innerText = '-';
+            } else {
+                icon.innerText = '+';
+            }
+        }
+    </script>
+                                
     </body>
 </html>
