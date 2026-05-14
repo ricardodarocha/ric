@@ -711,36 +711,7 @@
 
     </section>
 
-    <script>
-
-        document
-            .querySelectorAll('.waitlist')
-            .forEach(form => {
-
-                form.addEventListener('submit', function (event) {
-
-                    event.preventDefault();
-
-                    const email = document
-                        .getElementById('email-input')
-                        .value
-                        .trim();
-
-                    /*
-                        Redireciona para:
-                        inscricao.html?email=usuario@email.com
-                    */
-
-                    const target =
-                        'inscricao.html?email=' +
-                        encodeURIComponent(email);
-
-                    window.location.href = target;
-
-                });
-            });
-
-    </script>
+   
 
     <!-- FEATURES -->
 
@@ -947,6 +918,7 @@
 
             </form>
 
+            
         </div>
 
     </section>
@@ -956,6 +928,37 @@
     <footer class="text-center py-8 text-sm text-gray-500 border-t border-[#d8c8b8] mt-12">
         <p class="fantasy-font">&copy; 2026 Masterclass - Rust Direto ao Ponto. Todos os direitos reservados.</p>
     </footer>
+
+     <script>
+
+        document
+            .querySelectorAll('.waitlist')
+            .forEach(form => {
+
+                form.addEventListener('submit', function (event) {
+
+                    event.preventDefault();
+
+                    const email = document
+                        .getElementById('email-input')
+                        .value
+                        .trim();
+
+                    /*
+                        Redireciona para:
+                        inscricao.html?email=usuario@email.com
+                    */
+
+                    const target =
+                        'inscricao.html?email=' +
+                        encodeURIComponent(email);
+
+                    window.location.href = target;
+
+                });
+            });
+
+    </script>
 
     <script>
         // JS simples para o efeito de acordeão dos cards (Saga)
