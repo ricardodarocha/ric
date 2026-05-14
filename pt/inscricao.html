@@ -34,6 +34,27 @@
         marginwidth="0">
         Carregando…
     </iframe>
+<script>
 
+window.addEventListener('DOMContentLoaded', () => {
+
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get('email');
+    if (!email) return;
+    /*
+        Substitua pelo ID REAL do campo email
+        do Google Forms
+    */
+
+    const input = document.querySelector(
+        'input[name="entry.1822277273"]'
+    );
+
+    if (input) {
+        input.value = email;
+    }
+});
+
+</script>
 </body>
 </html>
