@@ -1,35 +1,62 @@
-<!doctype html>
-<html lang="pt-br">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Rust | Ricardo da Rocha</title>
-        <meta name="description" content="Nova turma de rust com aulas exclusivas. Clique no link e reserve sua vaga." /> 
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-        <!--Inter UI font-->
-        <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass de rust | Ricardo da Rocha</title>
+    <meta name="description" content="Nova turma de rust com aulas exclusivas. Clique no link e reserve sua vaga." />
 
-        <!--vendors styles-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <!-- Bootstrap CSS / Color Scheme -->
-        <link rel="stylesheet" href="../assets/default.css" id="theme-color">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
+    <!--Inter UI font-->
+    <!-- <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet"> -->
+
+    <!--Google Cinzel font-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
         :root {
-            --bg-color: #f7ede2; /* Bege-rosado */
-            --accent-color: #ff4500; /* Laranja redorange vibrante */
-            --text-dark: #2b1d14; /* Marrom muito escuro, tom nórdico */
+            --bg-color: #f7ede2;
+            /* Bege-rosado */
+            --accent-color: #ff4500;
+            /* Laranja redorange vibrante */
+            --text-dark: #2b1d14;
+            /* Marrom muito escuro, tom nórdico */
             --card-bg: rgba(253, 248, 243, 0.85);
+
+            --bg: #f7ede2;
+            --bg-soft: #fffaf5;
+            --accent: #ff5a1f;
+            --accent-soft: #ff8d5f;
+            --text: #2b1d14;
+            --muted: #6b5b50;
+            --border: rgba(0, 0, 0, 0.08);
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                linear-gradient(rgba(247, 237, 226, 0.94), rgba(247, 237, 226, 0.94)),
+                url('https://www.transparenttextures.com/patterns/old-wall.png');
+
+            color: var(--text);
+
+            font-family: 'Inter', sans-serif;
+
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* 
         body {
             background-color: var(--bg-color);
             background-image: url('https://www.transparenttextures.com/patterns/recycled-paper-texture.png');
@@ -38,18 +65,132 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-        }
+        } */
 
-        h1, h2, h3, h4, .fantasy-font {
+        h1,
+        h2,
+        h3,
+        h4,
+        .fantasy-font {
             font-family: 'Cinzel', serif;
         }
 
-        .text-accent {
-            color: var(--accent-color);
+        .fantasy {
+            font-family: 'Cinzel', serif;
         }
 
-        .bg-accent {
-            background-color: var(--accent-color);
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 96px 24px;
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        /* .bg-accent {
+            background-color: var(--accent);
+        } */
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 26px;
+
+            background: linear-gradient(135deg,
+                    var(--accent),
+                    var(--accent-soft));
+
+            color: white;
+            font-weight: 700;
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            transition: 0.25s ease;
+
+            box-shadow:
+                0 8px 18px rgba(255, 90, 31, 0.18);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 14px 24px rgba(255, 90, 31, 0.22);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.65);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            transition: 0.3s ease;
+
+            backdrop-filter: blur(6px);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 90, 31, 0.2);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 18px;
+            line-height: 1.1;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .badge {
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .saga-card {
+            padding: 28px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .saga-card .card-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.35s ease;
+        }
+
+        .saga-card.active .card-content {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 18px;
+        }
+
+        .saga-card h3 {
+            font-size: 1.3rem;
+        }
+
+        .saga-card ul {
+            margin-top: 16px;
+            padding-left: 18px;
+        }
+
+        .saga-card li {
+            margin-bottom: 8px;
+            color: var(--muted);
         }
 
         /* Scarcity Banner & Button */
@@ -104,13 +245,15 @@
             position: relative;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .saga-card::before {
+        */ .saga-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 4px;
             background: var(--accent-color);
             transform: scaleX(0);
@@ -128,12 +271,24 @@
             transform: scaleX(1);
         }
 
-        .saga-card h3 {
+        /* .saga-card h3 {
             font-size: 1.5rem;
             margin-bottom: 12px;
             color: var(--text-dark);
             border-bottom: 1px solid #e2d5c8;
             padding-bottom: 8px;
+        }*/
+
+        .review {
+            padding: 28px;
+        }
+
+        .review img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 999px;
+            border: 3px solid rgba(255, 90, 31, 0.2);
         }
 
         /* Modal / Expand Content */
@@ -148,7 +303,8 @@
         }
 
         .saga-card.active .card-content {
-            max-height: 500px; /* Arbitrary large height */
+            max-height: 500px;
+            /* Arbitrary large height */
             opacity: 1;
             margin-top: 16px;
         }
@@ -163,11 +319,13 @@
             list-style-type: none;
             padding-left: 0;
         }
+
         .card-content li {
             position: relative;
             padding-left: 20px;
             margin-bottom: 8px;
         }
+
         .card-content li::before {
             content: '▹';
             position: absolute;
@@ -175,7 +333,7 @@
             color: var(--accent-color);
             font-weight: bold;
         }
-        
+
         .hero-tech {
             background: rgba(43, 29, 20, 0.05);
             border-left: 4px solid var(--accent-color);
@@ -183,65 +341,144 @@
             border-radius: 0 8px 8px 0;
             margin: 20px 0;
         }
+
+        #features {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .quote {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .code-window {
+            background: #1e1e1e;
+            color: #79ffa1;
+
+            border-radius: 18px;
+
+            padding: 28px;
+
+            overflow-x: auto;
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.10);
+        }
+
+        .code-window pre {
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.8;
+        }
+
+        hr.soft {
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        @media(max-width: 768px) {
+
+            .section {
+                padding: 72px 20px;
+            }
+
+            .saga-card {
+                padding: 22px;
+            }
+
+        }
     </style>
 
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.-top-4{top:-1rem}.left-1\/2{left:50%}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-12{margin-top:3rem}.mt-8{margin-top:2rem}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.h-5{height:1.25rem}.w-5{width:1.25rem}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.flex-grow{flex-grow:1}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-1{--tw-rotate:1deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.overflow-x-auto{overflow-x:auto}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-b-4{border-bottom-width:4px}.border-t{border-top-width:1px}.border-\[\#d8c8b8\]{--tw-border-opacity:1;border-color:rgb(216 200 184 / var(--tw-border-opacity, 1))}.border-\[\#e2d5c8\]{--tw-border-opacity:1;border-color:rgb(226 213 200 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.border-orange-300{--tw-border-opacity:1;border-color:rgb(253 186 116 / var(--tw-border-opacity, 1))}.bg-\[\#e8dbc8\]{--tw-bg-opacity:1;background-color:rgb(232 219 200 / var(--tw-bg-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.\!py-3{padding-top:0.75rem !important;padding-bottom:0.75rem !important}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-4{padding-bottom:1rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.\!text-base{font-size:1rem !important;line-height:1.5rem !important}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:-translate-y-1:hover{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.focus\:border-orange-500:focus{--tw-border-opacity:1;border-color:rgb(249 115 22 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}@media (min-width: 768px){.md\:max-w-xs{max-width:20rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-7xl{font-size:4.5rem;line-height:1}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style>
-        
-        
-        
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18156304178"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'AW-18156304178');
-        </script>
-    </head>
-    <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=AW-18156304178"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-        
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18156304178"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-        <div class="scarcity-container">
-        <span class="fantasy-font text-xl">Atenção:</span> Este curso ainda não tem vagas disponíveis. Seja o primeiro da fila!
+        gtag('config', 'AW-18156304178');
+    </script>
+
+
+</head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=AW-18156304178" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Scarcity Banner -->
+    <div class="scarcity-container">
+        <span class="fantasy-font text-xl">Atenção:</span> Este curso ainda não tem vagas disponíveis. Seja o primeiro
+        da fila!
     </div>
-        <header class="max-w-6xl mx-auto px-6 py-20 text-center flex flex-col items-center">
-        <h2 class="fantasy-font text-accent tracking-widest text-lg md:text-xl mb-4">A Forja da Maestria</h2>
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Masterclass Rust <br> <span class="text-3xl md:text-5xl font-light">A Saga Épica</span></h1>
-        
+
+    <!-- Hero Section -->
+    <header class="max-w-6xl mx-auto px-6 py-20 text-center flex flex-col items-center">
+        <h2 class="fantasy-font text-accent tracking-widest text-lg md:text-xl mb-4">Nova turma com aulas exclusivas!
+        </h2>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Rust Direto ao Ponto <br> <span
+                class="text-3xl md:text-5xl font-light">A Saga Épica</span></h1>
+
         <p class="text-xl md:text-2xl max-w-3xl mb-8 text-gray-700">
-            Domine os sistemas de forma definitiva. Precisão técnica cirúrgica, performance sem falsas promessas.
+            Aprenda a linguagem rust em uma imersão direto ao ponto.
         </p>
 
-        <div class="hero-tech max-w-2xl text-left flex flex-wrap justify-center gap-6 font-semibold text-sm md:text-base text-gray-800">
-            <span class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Game Dev com Bevy</span>
-            <span class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> APIs com Axum</span>
-            <span class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Frontend com Yew</span>
+        <div
+            class="hero-tech max-w-2xl text-left flex flex-wrap justify-center gap-6 font-semibold text-sm md:text-base text-gray-800">
+            <span class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"></path>
+                </svg> Desvendando o Compilador</span>
+            <span class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"></path>
+                </svg> Banco de Dados</span>
+            <span class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="currentColor"
+                    viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"></path>
+                </svg> Construção de Servidores</span>
         </div>
 
         <div class="mt-8">
-            <a href="#reservar" class="btn-epic">Reservar Minha Vaga</a>
+            <a href="/pt/inscricao.html" class="btn-epic">Reservar Minha Vaga</a>
         </div>
     </header>
 
-        <section class="max-w-5xl mx-auto px-6 py-16">
+    <!-- Why Rust -->
+    <section class="max-w-5xl mx-auto px-6 py-16">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h2 class="text-4xl text-accent mb-6 border-b border-orange-300 pb-4 inline-block">Por que Rust?</h2>
                 <h3 class="text-2xl mb-4 fantasy-font">O Problema que Ela Resolve</h3>
                 <p class="text-lg leading-relaxed mb-4">
-                    Rust não é apenas mais uma linguagem; é uma mudança de paradigma. Para engenheiros de software seniores, os maiores inimigos sempre foram <strong>vazamentos de memória, data races e a sobrecarga de Garbage Collectors</strong>.
+                    Rust não é apenas mais uma linguagem; é uma mudança de paradigma. Para engenheiros de software
+                    seniores, os maiores inimigos sempre foram <strong>vazamentos de memória, data races e a sobrecarga
+                        de Garbage Collectors</strong>.
                 </p>
                 <p class="text-lg leading-relaxed">
-                    Com o seu <em>Borrow Checker</em> implacável, Rust garante segurança de memória em tempo de compilação. É o poder e a velocidade de C/C++ combinados com a segurança de linguagens modernas, permitindo o desenvolvimento de sistemas complexos, APIs hiper-rápidas e jogos imersivos sem sacrificar noites de sono debugando falhas silenciosas.
+                    Com o seu <em>Borrow Checker</em> implacável, Rust garante segurança de memória em tempo de
+                    compilação. É o poder e a velocidade de C/C++ combinados com a segurança de linguagens modernas,
+                    permitindo o desenvolvimento de sistemas complexos, APIs hiper-rápidas e jogos imersivos sem
+                    sacrificar noites de sono debugando falhas silenciosas.
                 </p>
             </div>
             <div class="bg-gray-800 p-6 rounded-lg shadow-2xl transform rotate-1 border border-gray-700">
-                <pre class="text-green-400 font-mono text-sm overflow-x-auto"><code>fn forjar_maestria() -&gt; Result&lt;Especialista, Erro&gt; {
+                <pre class="text-green-400 font-mono text-sm overflow-x-auto">
+<code>fn forjar_maestria() -> Result&lt;Especialista, Erro&gt; {
     let mut desenvolvedor = Desenvolvedor::new();
     
     // Sem data races. Sem segfaults.
@@ -255,25 +492,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-        <section class="max-w-6xl mx-auto px-6 py-16 relative">
+    <!-- The Saga (Course Curriculum) -->
+    <section class="max-w-6xl mx-auto px-6 py-16 relative">
         <div class="text-center mb-12">
             <h2 class="text-5xl text-accent mb-4">A Jornada do Código</h2>
-            <p class="text-xl max-w-2xl mx-auto">Uma saga dividida em 8 tomos de conhecimento. Clique nos pergaminhos abaixo para revelar os segredos de cada semana.</p>
+            <p class="text-xl max-w-2xl mx-auto">Dividida em 8 tomos. Clique para explorar cada semana.</p>
         </div>
 
         <div class="saga-grid">
             <!-- Week 1 -->
             <div class="saga-card" onclick="toggleCard(this)">
                 <div class="flex justify-between items-center">
-                    <h3>I. O Despertar</h3>
+                    <h3>I. Anatomia do compilador</h3>
                     <span class="text-accent fantasy-font text-2xl">+</span>
                 </div>
                 <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 1</div>
                 <div class="card-content">
                     <p class="font-bold mb-2">Instalação, configuração e plataformas (Windows, iOS, Linux, WSL)</p>
                     <ul>
-                        <li><strong>Aula 1:</strong> cargo cli, cargo new, cargo add. Criação do primeiro programa, Gerenciamento de Dependências, cargo run.</li>
-                        <li><strong>Aula 2 (Bônus):</strong> Estudando por conta, Rust Playground, repositório do curso, repositórios de exemplos e livros.</li>
+                        <li><strong>Aula 1:</strong> cargo cli, cargo new, cargo add. Criação do primeiro programa,
+                            Gerenciamento de Dependências, cargo run.</li>
+                        <li><strong>Aula 2 (Bônus):</strong> Estudando por conta, Rust Playground, repositório do curso,
+                            repositórios de exemplos e livros.</li>
                     </ul>
                 </div>
             </div>
@@ -287,8 +527,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 2</div>
                 <div class="card-content">
                     <ul>
-                        <li>Comandos profundos: <code>cargo build</code></li>
-                        <li>Entendendo o diretório <code>target</code></li>
+                        <li>Command Line Interface: <code>cargo build</code></li>
+                        <li>Explorando os artefatos <code>target</code></li>
                         <li>Distribuição de binários</li>
                         <li>Criação de CLIs eficientes</li>
                         <li>Como funciona o fluxo de programação em Rust</li>
@@ -307,7 +547,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <ul>
                         <li>Paradigmas e Boas práticas idiomáticas</li>
                         <li>Domínio de <code>Structs</code></li>
-                        <li>O poder oculto das <code>Macros</code></li>
+                        <li>O poder oculto dos <code>Enum</code></li>
                         <li>Construindo aplicações robustas com <code>clap</code></li>
                     </ul>
                 </div>
@@ -316,7 +556,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <!-- Week 4 -->
             <div class="saga-card" onclick="toggleCard(this)">
                 <div class="flex justify-between items-center">
-                    <h3>IV. O Pergaminho dos Tipos</h3>
+                    <h3>IV. Os Tipos Fortes</h3>
                     <span class="text-accent fantasy-font text-2xl">+</span>
                 </div>
                 <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 4</div>
@@ -324,9 +564,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <ul>
                         <li>Tipos de Dados primitivos</li>
                         <li>Tipos escalares</li>
-                        <li>O poder algebraico dos <code>Enums</code></li>
                         <li>Flexibilidade com <code>Generics</code></li>
-                        <li>Ausência de nulos: Tratando <code>Option</code></li>
+                        <li>Especializando com <code>Option</code> e <code>Result</code> </li>
                     </ul>
                 </div>
             </div>
@@ -334,10 +573,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <!-- Week 5 -->
             <div class="saga-card" onclick="toggleCard(this)">
                 <div class="flex justify-between items-center">
-                    <h3>V. A Armadura Absoluta</h3>
+                    <h3>V. Segurança e Desempenho</h3>
                     <span class="text-accent fantasy-font text-2xl">+</span>
                 </div>
-                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 5 (Segurança)</div>
+                <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 5 (Segurança)
+                </div>
                 <div class="card-content">
                     <ul>
                         <li>Enfrentando o <strong>Borrow Checker</strong></li>
@@ -351,12 +591,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <!-- Week 6 -->
             <div class="saga-card" onclick="toggleCard(this)">
                 <div class="flex justify-between items-center">
-                    <h3>VI. O Labirinto</h3>
+                    <h3>VI. Loops e Iteradores</h3>
                     <span class="text-accent fantasy-font text-2xl">+</span>
                 </div>
                 <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 6</div>
                 <div class="card-content">
                     <ul>
+                        <li>O poder da programação funcinal</li>
                         <li>Loops, controle de fluxo avançado</li>
                         <li>Iteradores funcionais e Zero-Cost Abstraction</li>
                         <li><strong>Projeto:</strong> Construindo um game básico com <code>ggez</code></li>
@@ -367,7 +608,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <!-- Week 7 -->
             <div class="saga-card" onclick="toggleCard(this)">
                 <div class="flex justify-between items-center">
-                    <h3>VII. Os Registros Antigos</h3>
+                    <h3>VII. Conectando sistemas</h3>
                     <span class="text-accent fantasy-font text-2xl">+</span>
                 </div>
                 <div class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Semana 7</div>
@@ -401,420 +642,326 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-        <section class="bg-[#e8dbc8] py-16 border-t border-b border-[#d8c8b8]">
+    <!-- What's Next -->
+    <section class="bg-[#e8dbc8] py-16 border-t border-b border-[#d8c8b8]">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-4xl text-accent mb-8">O que vem a seguir?</h2>
-            <p class="text-xl mb-8">O céu é o limite. Ao finalizar esta saga, você terá as ferramentas para desbravar qualquer domínio da engenharia de software.</p>
-            
+            <p class="text-xl mb-8">O céu é o limite. Ao finalizar esta saga, você terá as ferramentas para desbravar
+                qualquer domínio da engenharia de software.</p>
+
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8 fantasy-font font-bold text-lg">
-                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* Web *</div>
-                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* Banco de Dados *</div>
-                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* S.O. *</div>
-                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* Jogos *</div>
-                <div class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">* UI *</div>
+                <div
+                    class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">
+                    * Servidores Web *</div>
+                <div
+                    class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">
+                    * Banco de Dados *</div>
+                <div
+                    class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">
+                    * Sistemas Operacionais. *</div>
+                <div
+                    class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">
+                    * Desenvolvimento de Jogos *</div>
+                <div
+                    class="bg-white p-4 rounded shadow text-center border-b-4 border-accent-color hover:-translate-y-1 transition">
+                    * UI Cross Platform *</div>
             </div>
 
-            <p class="text-gray-700 italic">Discutiremos planos de carreira, métodos de estudo contínuo e ajudaremos você a escolher o próximo passo. Qual caminho você irá seguir?</p>
+            <p class="text-gray-700 italic">Discutiremos planos de carreira, métodos de estudo contínuo e ajudaremos
+                você a escolher o próximo passo. Qual caminho você irá seguir?</p>
         </div>
     </section>
 
-        
+<!-- CTA -->
+<section id="reservar" class="max-w-3xl mx-auto px-6 py-20 text-center">
 
-        <!-- features section -->
-        <section class="py-6" id="features">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 mx-auto">
-                        <h2 class="dot-circle">Por que aprender Rust</h2>
-                        <div class="row mt-6">
-                            <div class="col-sm-6 mb-5">
-                                <div class="media">
-                                    <div class="icon-box mt-0 ml-0">
-                                        <div class="icon-box-inner small-xs text-primary">
-                                            <span data-feather="layers" width="30" height="30"></span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mt-0">Desenvolvimento de Games</h5>
-                                        <span class="text-muted">Bevy é um dos mais modernos framework de games, com a filosofia CMS é um dos primeiros frameworks inteiramente orientado a dados</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 mb-5">
-                                <div class="media">
-                                    <div class="icon-box mt-0 ml-0">
-                                        <div class="icon-box-inner small-xs text-primary">
-                                            <span data-feather="zap" width="30" height="30"></span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mt-0">Desenvolvimento Web</h5>
-                                        <span class="text-muted">Rust possui ferramentas que potencializam o desenvolvimento tanto front-end como backend, como construção de apis conectando no banco de dados, layers de segurança e WASM nativo.</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 mb-5">
-                                <div class="media">
-                                    <div class="icon-box mt-0 ml-0">
-                                        <div class="icon-box-inner small-xs text-primary">
-                                            <span data-feather="users" width="30" height="30"></span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mt-0">Alunos</h5>
-                                        <span class="text-muted">Mais de 28 inscrições já confirmadas</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 mb-5">
-                                <div class="media">
-                                    <div class="icon-box mt-0 ml-0">
-                                        <div class="icon-box-inner small-xs text-primary">
-                                            <span data-feather="command" width="30" height="30"></span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mt-0">A linguagem mais amada</h5>
-                                        <span class="text-muted">Rust é considerada a Linguagem mais amada pela comunidade há 6 anos consecutivos</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 mb-5">
-                                <div class="media">
-                                    <div class="icon-box mt-0 ml-0">
-                                        <div class="icon-box-inner small-xs text-primary">
-                                            <span data-feather="droplet" width="30" height="30"></span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mt-0">Metodologia inovadora</h5>
-                                        <span class="text-muted">Neste curso estamos experimentando duas novas metodologias de ensino baseado na Repetição Espaçada (RE) e Aprendizada Baseada em Problema (ABP) </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 mb-5">
-                                <div class="media">
-                                    <div class="icon-box mt-0 ml-0">
-                                        <div class="icon-box-inner small-xs text-primary">
-                                            <span data-feather="headphones" width="30" height="30"></span>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="mt-0">Suporte em tempo real</h5>
-                                        <span class="text-muted">Participando deste curso presencial você poderá recorrer ao professor em tempo real e levar suas dúvidas, além de fazer networking e expor os seus objetivos</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-md-6 mx-auto text-center">
-                        <h5 class="mb-4">Dúvidas?</h5>
-                        <a href="https://api.whatsapp.com/send?phone=5532984052664&text=Olá+Ricardo%F0%9F%91%8B,+gostaria+de+conversar+sobre+" class="btn btn-primary page-scroll">Contate o instrutor Ricardo pelo whatsapp</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <h2 class="text-4xl mb-6 fantasy-font">
+        Reivindique seu Lugar na Imersão
+    </h2>
 
-        <!-- about / reviews section -->
-        <section class="pb-6" id="about">
-            <div class="container">
-                <hr class="mt-5"/>
-                <div class="row my-5">
-                    <div class="col-md-6 order-2 order-md-1 my-md-auto">
-                        <h3>Conheça Jogos desenvovidos em Rust</h3>
-                        <p class="text-muted lead">
-                            Rust possui uma camada de segurança robusta e uma comunidade em crescente expansão, o que tem atraído a atenção dos desenvolvedores de games. O maior framework de desenvolvimento de jogos em Rust é a biblioteca Bevy que pode ser conhecida a fundo no site.
-                        </p>
-                        <a href="https://bevyengine.org/" class="btn btn-primary">Conheça o framework Bevy</a>
-                    </div>
-                    <div class="col-md-6 order-1 order-md-2">
-                        <img src="../assets/imac.png" class="img-fluid d-block mx-auto" alt="iMac"/>
-                    </div>
-                </div>
+    <p class="text-lg mb-8 text-gray-700 leading-relaxed">
+        O ecossistema Rust cresce exponencialmente,
+        mas os mestres ainda são raros. Antecipe-se.
+    </p>
 
-                <div class="row mt-7">
-                    <div class="col-md-6">
-                        <img src="../assets/macbook.png" class="img-fluid d-block mx-auto" alt="MacBook"/>
-                    </div>
-                    <div class="col-md-6 my-md-auto">
-                        <h3>Aprovado pelas maiores big techs do planeta</h3>
-                        <p class="text-muted lead">
+    <div class="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-[#e7d7ca] relative">
 
-                        </p>
-                        Conheça a opinião de gigantes da tecnologia sobre Rust
-                        <ul>
-                            <ol><a href="https://canaltech.com.br/software/chefe-de-tecnologia-da-microsoft-pede-fim-do-uso-de-c-e-c-em-novos-projetos-225904/"
-                                class="btn btn-primary">Microsoft</a></li>
-                            <ol><a href="#"  class="btn btn-primary">NSA</a></li>
-                            <ol><a href="#"  class="btn btn-primary">Google</a></li>
-                        </ul>                        
-                    </div>
-                </div>
+        <h3 class="text-2xl mb-4 font-bold text-gray-800">
+            Este curso ainda não tem vagas disponíveis.
+        </h3>
 
-                <div class="row mt-7">
-                    <div class="col-md-8 mx-auto slick-users">
-                        <div class="review text-center">
-                            <div class="mt-4 d-flex flex-row align-items-center justify-content-center">
-                                <img src="../assets/client-1.jpg" class="img-review rounded-circle mr-2" alt="Client 1"/>
-                                <span class="text-muted">Mark Russinovich, Chefe de Tecnologia da Microsoft</span>
-                            </div><p class="quote">É hora de parar de iniciar qualquer novo projeto em C/C++ e usar Rust para aqueles cenários onde uma
-                                linguagem sem
-                                coletor de lixo é necessária</p>
-                        </div>
-                        <div class="space-y-8">
+        <p class="text-gray-600 mb-8 leading-relaxed">
+            Reserve sua vaga e seja notificado em primeira mão
+            quando os portões se abrirem.
+        </p>
 
-                        </div>
-                        <div class="review text-center">
-                           
-                            <div class="mt-4 d-flex flex-row align-items-center justify-content-center">
-                                <img src="../assets/client-2.jpg" class="img-review rounded-circle mr-2" alt="Client 2"/>
-                                <span class="text-muted">NSA, Agência de Segurança da Casa Branca</span>
-                            </div><p class="quote">Novos software devem ser escritos em linguagens que proporcionem memória segura</p>
-                        </div>
-                        <div class="space">
-                        
-                        </div>
-                        <div class="review text-center">
-                            <div class="mt-4 d-flex flex-row align-items-center justify-content-center">
-                                <img src="../assets/client-3.jpg" class="img-review rounded-circle mr-2" alt="Client 3"/>
-                                <span class="text-muted">Jeff Vander Stoep, <a href="https://security.googleblog.com/2024/09/eliminating-memory-safety-vulnerabilities-Android.html">
-                                    
-                                Google </a>Android team</span>
-                            </div><p class="quote">A mudança do Google para a programação Rust reduz as vulnerabilidades de memória do Android em 68%</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- FORM -->
+        <form id="waitlist-form" class="flex flex-col md:flex-row gap-4 justify-center items-center">
 
-        <!--pricing section-->
-        <section class=" pt-6" id="pricing">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 mx-auto">
-                        <h2 class="dot-circle">Comunidade de Software Livre</h2>
-                        <p class="text-muted lead">Faça parte da comunidade mais amável</p>
-                        <div class="row pricing-table mt-5">
-                            <div class="col-sm-5">
-                                <ul class="list-unstyled pricing-list">
-                                    <li>
-                                        <h5>Comunidade Brasileira</h5>
-                                        <p class="text-muted">Meetups e comunidades Rust no Brasil</p>
-                                    </li>
-                                    <li>
-                                        <h5>Eventos Internacionais</h5>
-                                        <p class="text-muted">Diversos eventos internacionais podem ser referência na sua carreira</p>
-                                    </li>
-                                    <li>
-                                        <h5>Sem fronteiras</h5>
-                                        <p class="text-muted">Diversos grupos nacionais e internacionais pela internet, comunidades de games, desenvolvimento web, e comunidade científica</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6 ml-auto bg-primary">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <p class="h1 text-white">R$ 0.00</p>
-                                        <p class="text-light">Apoio Unifagoc</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <input id="email-input" type="email" placeholder="Seu melhor e-mail" required
+                class="w-full md:w-[320px] px-5 py-4 rounded-xl border border-gray-200 bg-white outline-none focus:border-orange-500 transition">
 
-        <!--help section-->
-        <section class=" mt-7" id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 mx-auto">
-                        <h2 class="dot-circle">Ficou com alguma dúvida</h2>
-                        <p class="text-muted lead">Ficarei feliz em esclarecer qualquer dúvida sobre o curso.</p>
-                        <div class="row mt-5 card-contacts">
-                            <div class="col-md-6 mb-3">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <div class="icon-box">
-                                            <div class="icon-box-inner small-xs text-primary">
-                                                <span data-feather="inbox" width="30" height="30"></span>
-                                            </div>
-                                        </div>
-                                        <h5>Envie um e-mail para o instrutor</h5>
-                                        <p class="text-muted small-xl">Em geral eu respondo em menos de 24hs.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <div class="icon-box">
-                                            <div class="icon-box-inner small-xs text-primary">
-                                                <span data-feather="message-circle" width="30" height="30"></span>
-                                            </div>
-                                        </div>
-                                        <h5>Envie um Zap</h5>
-                                        <p class="text-muted small-xl">Acesse o  <a href="">grupo do curso</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col-md-6 mb-5">
-                                <h6>Como funciona o curso?</h6>
-                                <p class="text-muted">A Unifagoc disponibilizou o lab0 para este curso. Os encontros serão presenciais na UNIFAGOC segundas-feiras às 19hs.</p>
-                            </div>
-                            <div class="col-md-6 mb-5">
-                                <h6>Qual o prazo de duração do curso?</h6>
-                                <p class="text-muted">4 encontros presenciais.</p>
-                            </div>
-                            <div class="col-md-6 mb-5">
-                                <h6>O curso será transmitido na modalidade EAD</h6>
-                                <p class="text-muted">Não. Este curso será unicamente presencial, porém será oferecido um repositório on-line com as atividades do curso no github</p>
-                            </div>
-                            <div class="col-md-6 mb-5">
-                                <h6>Precisa levar computador?</h6>
-                                <p class="text-muted">Não, o laboratório lab0 dispõe de 40 computadores de última geração que são suficientes para este treinamento</p>
-                            </div>
-                            <div class="col-md-6 mb-5">
-                                <h6>É necessário ter conhecimento prévio em linguagem de programação?</h6>
-                                <p class="text-muted">Não. O curso será oferecido para estudantes no primeiro período, que ainda não possuem contato com programação</p>
-                            </div>
-                            <div class="col-md-6 mb-5">
-                                <h6>Se eu tiver em um período mais avançado no curso eu posso matricular?</h6>
-                                <p class="text-muted">Sim. O curso possui uma série de links de referência que te permitirão aprender sozinho, incluindo acesso a comundiade de games, desenvolvimento WEB e nichos de pesquisa acadêmica na linguagem Rust.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <button type="submit" class="btn-epic !text-base !py-4 !px-8">
+                Reservar Minha Vaga
+            </button>
 
-        <!--footer / contact-->
-        <footer class="mt-5 mb-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 my-auto text-center text-md-left">
-                        &copy;2025 Ricardo da Rocha | Unifagoc.
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <ul class="list-inline social social-white-alt social-rounded social-sm mb-0">
-                            <li class="list-inline-item">
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href=""><i class="fa fa-google-plus"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href=""><i class="fa fa-dribbble"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 text-center text-md-right mb-0">
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><a href="politica.html">Privacidade</a></li>
-                            <li class="list-inline-item"><a href="#">Termos</a></li>
-                            <li class="list-inline-item"><a href="#">Afiliades</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-12 text-muted text-center small">
-                        &copy; 2025 Ricardo da Rocha | Unifagoc - All Rights Reserved
-                    </div>
-                </div>
-            </div>
-        </footer>
+        </form>
 
-        <!--video section-->
-        <section class="video-wrapper">
-            <div class="video-close" id="video-close">
-                <em data-feather="x" class="icon"></em>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 mx-auto my-auto">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item allowfullscreen" 
-                                    src="https://www.youtube.com/embed/MGsalg2f9js?rel=0&amp;controls=0&amp;showinfo=0" 
-                                    allowfullscreen="" frameborder="0" height="415" width="100%">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    </div>
 
-        <!--scroll to top-->
-        <div class="scroll-top">
-            <i class="fa fa-angle-up" aria-hidden="true"></i>
+</section>
+
+<script>
+
+    document
+        .getElementById('waitlist-form')
+        .addEventListener('submit', function (event) {
+
+            event.preventDefault();
+
+            const email = document
+                .getElementById('email-input')
+                .value
+                .trim();
+
+            /*
+                Redireciona para:
+                pt/inscricao.html?email=usuario@email.com
+            */
+
+            const target =
+                'pt/inscricao.html?email=' +
+                encodeURIComponent(email);
+
+            window.location.href = target;
+
+        });
+
+</script>
+
+    <!-- FEATURES -->
+    
+    <section class="section">
+    
+        <div class="text-center mb-16">
+    
+            <h2 class="section-title fantasy">
+                Por que aprender Rust?
+            </h2>
+    
         </div>
-
-        <!-- theme switcher (FOR DEMO ONLY - REMOVE FROM PRODUCTION)-->
-        <div class="switcher-wrap">
-            <div class="switcher-trigger">
-                <span class="fa fa-gear"></span>
+    
+        <div class="grid md:grid-cols-2 gap-6">
+    
+            <div class="card p-8">
+                <h3 class="fantasy text-2xl mb-4">
+                    Desenvolvimento de Games
+                </h3>
+    
+                <p class="section-subtitle">
+                    Frameworks como Bevy estão transformando o desenvolvimento de jogos
+                    com ECS e arquitetura orientada a dados.
+                </p>
             </div>
-            <div class="color-switcher">
-                <h6>Color Switcher</h6>
-                <ul class="mt-3 clearfix">
-                    <li class="bg-cyan active" data-color="default" title="Default Cyan"></li>
-                    <li class="bg-orange" data-color="orange" title="Orange"></li>
-                    <li class="bg-blue" data-color="blue" title="Blue"></li>
-                    <li class="bg-red" data-color="red" title="Red"></li>
-                    <li class="bg-indigo" data-color="indigo" title="Indigo"></li>
-                    <li class="bg-green" data-color="green" title="Green"></li>
-                    <li class="bg-black" data-color="black" title="Black"></li>
-                    <li class="bg-teal" data-color="teal" title="Teal"></li>
-                    <li class="bg-purple" data-color="purple" title="Purple"></li>
-                    <li class="bg-pink" data-color="pink" title="Pink"></li>
-                </ul>
-               
+    
+            <div class="card p-8">
+                <h3 class="fantasy text-2xl mb-4">
+                    Desenvolvimento Web
+                </h3>
+    
+                <p class="section-subtitle">
+                    APIs modernas, WASM, performance elevada e segurança robusta
+                    em aplicações backend.
+                </p>
             </div>
+    
+            <div class="card p-8">
+                <h3 class="fantasy text-2xl mb-4">
+                    Linguagem Mais Amada
+                </h3>
+    
+                <p class="section-subtitle">
+                    Rust lidera rankings de satisfação entre desenvolvedores
+                    há anos consecutivos.
+                </p>
+            </div>
+    
+            <div class="card p-8">
+                <h3 class="fantasy text-2xl mb-4">
+                    Suporte Presencial
+                </h3>
+    
+                <p class="section-subtitle">
+                    Networking, resolução de dúvidas em tempo real e acompanhamento próximo.
+                </p>
+            </div>
+    
         </div>
+    
+    </section>
 
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.5.0/feather.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-        <script src="js/scripts.js"></script>
 
-                                <section id="reservar" class="max-w-3xl mx-auto px-6 py-20 text-center">
-        <h2 class="text-4xl mb-6 fantasy-font">Reivindique seu Lugar na Távola</h2>
-        <p class="text-lg mb-8">O ecossistema Rust cresce exponencialmente, mas os mestres ainda são raros. Antecipe-se.</p>
-        
-        <div class="bg-white p-8 rounded-lg shadow-lg border border-[#e2d5c8] relative">
-            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest shadow-md">
-                Fila de Espera
+    <section class="section">
+    
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+    
+            <div>
+    
+                <h2 class="section-title fantasy">
+                    Jogos em Rust
+                </h2>
+    
+                <p class="section-subtitle mb-8">
+                    A segurança e o desempenho de Rust têm atraído cada vez mais
+                    desenvolvedores de jogos.
+                </p>
+    
+                <a href="https://bevyengine.org/" class="btn-primary">
+                    Conhecer Bevy
+                </a>
+    
             </div>
-            <h3 class="text-2xl mb-4 font-bold text-gray-800">Este curso ainda não tem vagas disponíveis.</h3>
-            <p class="text-gray-600 mb-8">Reserve sua vaga e seja notificado em primeira mão quando os portões se abrirem.</p>
-            
-            <form onsubmit="event.preventDefault(); alert('Vaga reservada na fila de espera! Você será notificado.');" class="flex flex-col md:flex-row gap-4 justify-center">
-                <input type="email" placeholder="Seu melhor e-mail" required="" class="px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-orange-500 flex-grow md:max-w-xs">
-                <button type="submit" class="btn-epic !text-base !py-3">Reservar Minha Vaga</button>
+    
+            <div>
+                <img src="../assets/imac.png" alt="Rust Games" class="w-full rounded-2xl" />
+            </div>
+    
+        </div>
+    
+    </section>
+    
+    <!-- REVIEWS -->
+    
+    <section class="section">
+    
+        <div class="text-center mb-16">
+    
+            <h2 class="section-title fantasy">
+                Grandes empresas apostam em Rust
+            </h2>
+    
+        </div>
+    
+        <div class="grid md:grid-cols-3 gap-6">
+    
+            <div class="card review">
+    
+                <div class="flex items-center gap-4">
+    
+                    <img src="../assets/client-1.jpg" alt="Microsoft">
+    
+                    <div>
+                        <strong>Microsoft</strong>
+                        <div class="text-sm text-gray-500">
+                            Mark Russinovich
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <p class="quote">
+                    “É hora de parar de iniciar novos projetos em C/C++.”
+                </p>
+    
+            </div>
+    
+            <div class="card review">
+    
+                <div class="flex items-center gap-4">
+    
+                    <img src="../assets/client-2.jpg" alt="NSA">
+    
+                    <div>
+                        <strong>NSA</strong>
+                        <div class="text-sm text-gray-500">
+                            Segurança de Memória
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <p class="quote">
+                    “Novos softwares devem usar linguagens memory-safe.”
+                </p>
+    
+            </div>
+    
+            <div class="card review">
+    
+                <div class="flex items-center gap-4">
+    
+                    <img src="../assets/client-3.jpg" alt="Google">
+    
+                    <div>
+                        <strong>Google</strong>
+                        <div class="text-sm text-gray-500">
+                            Android Team
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <p class="quote">
+                    “Rust reduziu vulnerabilidades de memória no Android.”
+                </p>
+    
+            </div>
+    
+        </div>
+    
+    </section>
+    
+    <!-- CTA -->
+    
+    <section id="reservar" class="section text-center">
+    
+        <div class="card p-8 md:p-12 max-w-3xl mx-auto">
+    
+            <div class="mb-4">
+    
+                <span class="badge">
+                    Fila de Espera
+                </span>
+    
+            </div>
+    
+            <h2 class="section-title fantasy">
+                Reserve sua vaga
+            </h2>
+    
+            <p class="section-subtitle max-w-2xl mx-auto mb-10">
+                Seja avisado quando a próxima turma abrir.
+            </p>
+    
+            <form onsubmit="event.preventDefault(); alert('Você entrou na fila de espera!');"
+                class="flex flex-col md:flex-row gap-4 justify-center">
+    
+                <input type="email" required placeholder="Seu melhor e-mail"
+                    class="px-5 py-4 rounded-xl border border-gray-200 bg-white outline-none w-full md:w-[320px]" />
+    
+                <button type="submit" class="btn-primary">
+                    Entrar na Lista
+                </button>
+    
             </form>
+    
         </div>
+    
     </section>
-<footer class="text-center py-8 text-sm text-gray-500 border-t border-[#d8c8b8] mt-12">
-        <p class="fantasy-font">© 2026 Masterclass Rust - A Saga. Todos os direitos reservados.</p>
+    
+
+
+    <footer class="text-center py-8 text-sm text-gray-500 border-t border-[#d8c8b8] mt-12">
+        <p class="fantasy-font">&copy; 2026 Masterclass - Rust Direto ao Ponto. Todos os direitos reservados.</p>
     </footer>
 
-                                <script>
+    <script>
         // JS simples para o efeito de acordeão dos cards (Saga)
         function toggleCard(element) {
             // Fechar os outros
             const allCards = document.querySelectorAll('.saga-card');
             allCards.forEach(card => {
-                if(card !== element) {
+                if (card !== element) {
                     card.classList.remove('active');
                     card.querySelector('span').innerText = '+';
                 }
@@ -823,13 +970,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             // Alternar o atual
             element.classList.toggle('active');
             const icon = element.querySelector('span');
-            if(element.classList.contains('active')) {
+            if (element.classList.contains('active')) {
                 icon.innerText = '-';
             } else {
                 icon.innerText = '+';
             }
         }
     </script>
-                                
-    </body>
+</body>
+
 </html>
