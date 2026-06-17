@@ -56,17 +56,6 @@
             overflow-x: hidden;
         }
 
-        /* 
-        body {
-            background-color: var(--bg-color);
-            background-image: url('https://www.transparenttextures.com/patterns/recycled-paper-texture.png');
-            color: var(--text-dark);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        } */
-
         h1,
         h2,
         h3,
@@ -89,11 +78,7 @@
             color: var(--accent);
         }
 
-        /* .bg-accent {
-            background-color: var(--accent);
-        } */
-
-        .btn-primary {
+       .btn-primary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -271,14 +256,6 @@
             transform: scaleX(1);
         }
 
-        /* .saga-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--text-dark);
-            border-bottom: 1px solid #e2d5c8;
-            padding-bottom: 8px;
-        }*/
-
         .review {
             padding: 28px;
         }
@@ -416,7 +393,7 @@
 
     <!-- Scarcity Banner -->
     <div class="scarcity-container">
-        <span class="fantasy-font text-xl">Atenção:</span> Este curso ainda não tem vagas disponíveis. Seja o primeiro
+        <span class="fantasy-font text-xl">Atenção:</span> Acabamos de liberar a próxima turma. Seja o primeiro
         da fila!
     </div>
 
@@ -471,6 +448,19 @@
     </div>
 </section>
 
+<script type="text/javascript">
+	function importHotmart(){ 
+ 		var imported = document.createElement('script'); 
+ 		imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
+ 		document.head.appendChild(imported); 
+		var link = document.createElement('link'); 
+		link.rel = 'stylesheet'; 
+		link.type = 'text/css'; 
+		link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
+		document.head.appendChild(link);	} 
+ 	importHotmart(); 
+ </script> 
+
         <div
             class="hero-tech max-w-2xl text-left flex flex-wrap justify-center gap-6 font-semibold text-sm md:text-base text-gray-800">
             <span class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="currentColor"
@@ -495,6 +485,7 @@
 
         <div class="mt-8">
             <a href="inscricao.html" class="btn-epic">Reservar Minha Vaga</a>
+            <a onclick="return false;" href="https://pay.hotmart.com/J106346650N?checkoutMode=2" class="hotmart-fb hotmart__button-checkout"><img src='https://static.hotmart.com/img/btn-buy-green.png'></a> 
         </div>
     </header>
 
