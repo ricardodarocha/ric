@@ -1,19 +1,21 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rust Masterclass - Domine a linguagem mais amada do mundo.">
     <title>Rust Masterclass</title>
+    
     <!-- Importando as fontes Cinzel e Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-color: #f7ede2;
-            /* Bege-rosado */
             --accent-color: #ff4500;
-            /* Laranja redorange vibrante */
             --text-dark: #2b1d14;
-            /* Marrom muito escuro, tom nórdico */
             --card-bg: rgba(253, 248, 243, 0.85);
 
             --bg: #f7ede2;
@@ -30,9 +32,8 @@
         }
 
         body {
-            background:
-                linear-gradient(rgba(247, 237, 226, 0.94), rgba(247, 237, 226, 0.94)),
-                url('https://www.transparenttextures.com/patterns/old-wall.png');
+            background: linear-gradient(rgba(247, 237, 226, 0.94), rgba(247, 237, 226, 0.94)),
+                        url('https://www.transparenttextures.com/patterns/old-wall.png');
             color: var(--text);
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -53,6 +54,14 @@
             color: var(--accent);
         }
 
+        /* Helpers e Utilitários */
+        .mt-8 {
+            margin-top: 32px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -70,24 +79,6 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 14px 24px rgba(255, 90, 31, 0.22);
-        }
-
-        .hotmart__button-checkout {
-            display: inline-block !important;
-            background-color: var(--accent-color) !important;
-            color: #fff !important;
-            font-family: 'Cinzel', serif !important;
-            font-weight: 700 !important;
-            font-size: 1.2rem !important;
-            padding: 16px 32px !important;
-            border: 2px solid var(--accent-color) !important;
-            border-radius: 4px !important;
-            text-transform: uppercase !important;
-            letter-spacing: 2px !important;
-            transition: all 0.3s ease !important;
-            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4) !important;
-            text-decoration: none !important;
-            cursor: pointer !important;
         }
 
         .card {
@@ -231,7 +222,6 @@
             box-shadow: 0 8px 16px rgba(255, 69, 0, 0.1);
         }
 
-        /* Lists in cards */
         .card-content ul {
             list-style-type: none;
             padding-left: 0;
@@ -259,30 +249,6 @@
             margin: 20px 0;
         }
 
-        .quote {
-            color: var(--muted);
-            line-height: 1.8;
-            margin-top: 20px;
-            font-style: italic;
-        }
-
-        .code-window {
-            background: #1e1e1e;
-            color: #79ffa1;
-            border-radius: 18px;
-            padding: 28px;
-            overflow-x: auto;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
-            margin: 24px 0;
-        }
-
-        .code-window pre {
-            margin: 0;
-            font-size: 0.92rem;
-            line-height: 1.8;
-        }
-
         hr.soft {
             border: none;
             border-top: 1px solid rgba(0, 0, 0, 0.06);
@@ -297,6 +263,7 @@
             border: 2px solid var(--accent-color);
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
             margin-top: 16px;
+            background-color: #2a2a2a; /* Cor de fundo enquanto carrega */
         }
 
         .iframe-container iframe {
@@ -312,18 +279,12 @@
         }
 
         @media(max-width: 768px) {
-            .section {
-                padding: 72px 20px;
-            }
-            .saga-card {
-                padding: 22px;
-            }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
+            .section { padding: 72px 20px; }
+            .saga-card { padding: 22px; }
+            .grid-2 { grid-template-columns: 1fr; }
         }
 
-                /* Botão de Destaque da Live com Efeito de Pulso */
+        /* Botão de Destaque da Live com Efeito de Pulso */
         .btn-live-stream {
             display: inline-flex;
             align-items: center;
@@ -343,8 +304,6 @@
             transition: all 0.3s ease !important;
             cursor: pointer !important;
             position: relative;
-            
-            /* Animação de pulso na sombra do botão */
             animation: live-glow 2s infinite;
         }
 
@@ -381,69 +340,39 @@
             animation: radar-pulse 1.5s infinite ease-in-out;
         }
 
-        /* Keyframes das Animações */
         @keyframes radar-pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2.8);
-                opacity: 0;
-            }
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.8); opacity: 0; }
         }
 
         @keyframes live-glow {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.6);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(255, 69, 0, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 69, 0, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 69, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
         }
-
     </style>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18156304178"></script>
-    
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'AW-18156304178');
-    </script>
-    
-    <!-- <script>
-    	  window.dataLayer = window.dataLayer || [];
-    	  function gtag(){dataLayer.push(arguments);}
-    	
-    	  gtag('js', new Date());
-    	
-    	  gtag('config', 'AW-18156304178/8mRICKXwpsQcELLuzNFD');
-    	</script> -->
-    
-    <script>
+
         function gtag_report_conversion(url) {
             var callback = function () {
                 if (typeof (url) != 'undefined') {
                     window.location = url;
                 }
             };
-
             gtag('event', 'conversion', {
                 'send_to': 'AW-18156304178/8mRICKXwpsQcELLuzNFD',
                 'event_callback': callback
             });
-
             return false;
         }
     </script>
-
 </head>
 <body>
 
@@ -461,7 +390,7 @@
         </div> 
 
         <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
-              <a href="https://calendar.app.google/1ZYXSyFeUKTn5YcV8" target="_blank" class="btn-live-stream">
+            <a href="https://calendar.app.google/1ZYXSyFeUKTn5YcV8" target="_blank" rel="noopener noreferrer" class="btn-live-stream">
                 <span class="live-indicator"></span>
                 Link da Live
             </a>
@@ -512,7 +441,7 @@
         </div>
     </section>
 
-    <!-- O que vamos aprender (Cards Expansíveis) -->
+    <!-- O que vamos aprender -->
     <section class="section" id="conteudo">
         <h2 class="section-title fantasy">Até onde <span class="text-accent">vamos?</span></h2>
         <p class="section-subtitle">Clique nos cards para expandir o conteúdo de cada módulo da masterclass.</p>
@@ -563,15 +492,17 @@
         <h2 class="section-title fantasy">Mão na <span class="text-accent">Massa</span></h2>
         <p class="section-subtitle">Pratique diretamente no navegador com os códigos da Masterclass (Rust Playground).</p>
 
-        <a href="https://rust-lang.org/tools/install/" target="_blank" class="btn-epic">Baixar o Rust</a>
-        <a href="https://play.rust-lang.org" target="_blank" class="btn-epic">Usar no Navegador</a>
+        <div style="margin-bottom: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="https://rust-lang.org/tools/install/" target="_blank" rel="noopener noreferrer" class="btn-epic">Baixar o Rust</a>
+            <a href="https://play.rust-lang.org" target="_blank" rel="noopener noreferrer" class="btn-epic">Usar no Navegador</a>
+        </div>
 
         <!-- Hello World -->
         <div class="card">
             <h3 class="fantasy">1. Hello World & Mensagens</h3>
             <p class="section-subtitle">O primeiro passo na jornada. Entendendo a estrutura básica de um programa.</p>
             <div class="iframe-container">
-                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=0deb2825abaad0eebac9f80ca17d6a7c" title="Rust Playground - Hello World"></iframe>
+                <iframe loading="lazy" src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=0deb2825abaad0eebac9f80ca17d6a7c" title="Rust Playground - Hello World"></iframe>
             </div>
         </div>
 
@@ -579,7 +510,7 @@
         <div class="card">
             <h3 class="fantasy">2. Idade</h3>
             <div class="iframe-container">
-                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=a5fd5b44760d960b9bbe34b301b6e75a" title="Rust Playground - Idade"></iframe>
+                <iframe loading="lazy" src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=a5fd5b44760d960b9bbe34b301b6e75a" title="Rust Playground - Idade"></iframe>
             </div>
         </div>
 
@@ -588,7 +519,7 @@
             <h3 class="fantasy">3. Tipos de Dados</h3>
             <p class="section-subtitle">Conhecendo o sistema forte de tipagem estática do Rust.</p>
             <div class="iframe-container">
-                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=c34c2f473f7ccbd0432286d8b64008d6" title="Rust Playground - Tipos"></iframe>
+                <iframe loading="lazy" src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=c34c2f473f7ccbd0432286d8b64008d6" title="Rust Playground - Tipos"></iframe>
             </div>
         </div>
 
@@ -596,7 +527,7 @@
         <div class="card">
             <h3 class="fantasy">4. Ortogonalidade</h3>
             <div class="iframe-container">
-                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=6ab579193994195403f64bacfeaced12" title="Rust Playground - Ortogonalidade"></iframe>
+                <iframe loading="lazy" src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=6ab579193994195403f64bacfeaced12" title="Rust Playground - Ortogonalidade"></iframe>
             </div>
         </div>
 
@@ -604,7 +535,7 @@
         <div class="card">
             <h3 class="fantasy">5. Desestruturação (Destructuring)</h3>
             <div class="iframe-container">
-                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=bf56367e4e8bf433bd7d4ffc761cce87" title="Rust Playground - Desestruturacao"></iframe>
+                <iframe loading="lazy" src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=bf56367e4e8bf433bd7d4ffc761cce87" title="Rust Playground - Desestruturacao"></iframe>
             </div>
         </div>
 
@@ -613,7 +544,7 @@
             <h3 class="fantasy">6. Imutabilidade</h3>
             <p class="section-subtitle">Por padrão, as variáveis em Rust são imutáveis para garantir a segurança da memória.</p>
             <div class="iframe-container">
-                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=22726494be5450a36178fd394d1edee5" title="Rust Playground - Imutabilidade"></iframe>
+                <iframe loading="lazy" src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=22726494be5450a36178fd394d1edee5" title="Rust Playground - Imutabilidade"></iframe>
             </div>
         </div>
 
@@ -622,13 +553,12 @@
             <h3 class="fantasy">7. Shadowing (Sombreamento)</h3>
             <p class="section-subtitle">Como redeclarar uma variável utilizando o mesmo nome no mesmo escopo.</p>
             <div class="iframe-container">
-                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=d0c87c9e5c30eb24f771c4196afa9697" title="Rust Playground - Shadowing"></iframe>
+                <iframe loading="lazy" src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=d0c87c9e5c30eb24f771c4196afa9697" title="Rust Playground - Shadowing"></iframe>
             </div>
         </div>
 
         <div class="mt-8">
             <a href="inscricao.html" class="btn-epic">Garantir Minha Vaga</a>
-            <!-- <a href="https://pay.hotmart.com/J106346650N" class="btn-epic">Comprar com Hotmart</a>  -->
             <a href="https://pay.hotmart.com/J106346650N" class="btn-epic"
                 onclick="return gtag_report_conversion('https://pay.hotmart.com/J106346650N');">
                 Comprar com Hotmart
