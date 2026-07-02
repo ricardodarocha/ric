@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Masterclass</title>
+    <!-- Importando as fontes Cinzel e Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f7ede2;
+            /* Bege-rosado */
+            --accent-color: #ff4500;
+            /* Laranja redorange vibrante */
+            --text-dark: #2b1d14;
+            /* Marrom muito escuro, tom nórdico */
+            --card-bg: rgba(253, 248, 243, 0.85);
+
+            --bg: #f7ede2;
+            --bg-soft: #fffaf5;
+            --accent: #ff5a1f;
+            --accent-soft: #ff8d5f;
+            --text: #2b1d14;
+            --muted: #6b5b50;
+            --border: rgba(0, 0, 0, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                linear-gradient(rgba(247, 237, 226, 0.94), rgba(247, 237, 226, 0.94)),
+                url('https://www.transparenttextures.com/patterns/old-wall.png');
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .fantasy-font, .fantasy {
+            font-family: 'Cinzel', serif;
+        }
+
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 96px 24px;
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 26px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: white;
+            font-weight: 700;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: 0.25s ease;
+            box-shadow: 0 8px 18px rgba(255, 90, 31, 0.18);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(255, 90, 31, 0.22);
+        }
+
+        .hotmart__button-checkout {
+            display: inline-block !important;
+            background-color: var(--accent-color) !important;
+            color: #fff !important;
+            font-family: 'Cinzel', serif !important;
+            font-weight: 700 !important;
+            font-size: 1.2rem !important;
+            padding: 16px 32px !important;
+            border: 2px solid var(--accent-color) !important;
+            border-radius: 4px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 2px !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4) !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            transition: 0.3s ease;
+            backdrop-filter: blur(6px);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 90, 31, 0.2);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 18px;
+            line-height: 1.1;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .badge {
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        /* Scarcity Banner & Button */
+        .scarcity-container {
+            background-color: var(--text-dark);
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .btn-epic {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 16px 32px;
+            border: 2px solid var(--accent-color);
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-epic:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+        }
+
+        /* Fantasy Cards */
+        .saga-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 20px 0;
+        }
+
+        .saga-card {
+            background: var(--card-bg);
+            border: 1px solid #d8c8b8;
+            border-radius: 8px;
+            padding: 24px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .saga-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .saga-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(43, 29, 20, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .saga-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .saga-card h3 {
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+
+        /* Modal / Expand Content */
+        .card-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4a3b32;
+        }
+
+        .saga-card.active .card-content {
+            max-height: 1000px;
+            opacity: 1;
+            margin-top: 16px;
+        }
+
+        .saga-card.active {
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 16px rgba(255, 69, 0, 0.1);
+        }
+
+        /* Lists in cards */
+        .card-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .card-content li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card-content li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .hero-tech {
+            background: rgba(43, 29, 20, 0.05);
+            border-left: 4px solid var(--accent-color);
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .quote {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .code-window {
+            background: #1e1e1e;
+            color: #79ffa1;
+            border-radius: 18px;
+            padding: 28px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+            margin: 24px 0;
+        }
+
+        .code-window pre {
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.8;
+        }
+
+        hr.soft {
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            margin: 40px 0;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            margin-top: 16px;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        @media(max-width: 768px) {
+            .section {
+                padding: 72px 20px;
+            }
+            .saga-card {
+                padding: 22px;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+                /* Botão de Destaque da Live com Efeito de Pulso */
+        .btn-live-stream {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-soft));
+            color: #fff !important;
+            font-family: 'Cinzel', serif !important;
+            font-weight: 700 !important;
+            font-size: 1.2rem !important;
+            padding: 18px 36px !important;
+            border: 2px solid var(--accent-color) !important;
+            border-radius: 8px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 2px !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            position: relative;
+            
+            /* Animação de pulso na sombra do botão */
+            animation: live-glow 2s infinite;
+        }
+
+        .btn-live-stream:hover {
+            background: transparent !important;
+            color: var(--accent-color) !important;
+            transform: translateY(-3px);
+        }
+
+        /* Indicador de Bolinha Piscante (Efeito Radar) */
+        .live-indicator {
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: relative;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-live-stream:hover .live-indicator {
+            background-color: var(--accent-color);
+        }
+
+        .live-indicator::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: inherit;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: radar-pulse 1.5s infinite ease-in-out;
+        }
+
+        /* Keyframes das Animações */
+        @keyframes radar-pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2.8);
+                opacity: 0;
+            }
+        }
+
+        @keyframes live-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.6);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 69, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 69, 0, 0);
+            }
+        }
+
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18156304178"></script>
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-18156304178');
+    </script>
+    
+    <!-- <script>
+    	  window.dataLayer = window.dataLayer || [];
+    	  function gtag(){dataLayer.push(arguments);}
+    	
+    	  gtag('js', new Date());
+    	
+    	  gtag('config', 'AW-18156304178/8mRICKXwpsQcELLuzNFD');
+    	</script> -->
+    
+    <script>
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof (url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+
+            gtag('event', 'conversion', {
+                'send_to': 'AW-18156304178/8mRICKXwpsQcELLuzNFD',
+                'event_callback': callback
+            });
+
+            return false;
+        }
+    </script>
+
+</head>
+<body>
+
+    <div class="scarcity-container fantasy-font">
+        Domine a linguagem mais amada do mundo. As vagas estão abertas!
+    </div>
+
+    <!-- Introdução -->
+    <section class="section" id="intro">
+        <h1 class="section-title">Rust <span class="text-accent">Masterclass</span></h1>
+        <p class="section-subtitle">Rust é uma linguagem de programação compilada, de tipagem estática forte, projetada para desenvolver sistemas seguros, com ótimo desempenho e alta escalabilidade.</p>
+        
+        <div class="hero-tech">
+            <p><strong>Dica:</strong> É uma linguagem de propósito geral inteiramente Open Source, com uma comunidade ativa e muitas aplicações práticas.</p>
+        </div> 
+
+        <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
+              <a href="https://calendar.app.google/1ZYXSyFeUKTn5YcV8" target="_blank" class="btn-live-stream">
+                <span class="live-indicator"></span>
+                Link da Live
+            </a>
+        </div>
+    </section>
+
+    <!-- Áreas e Mercado -->
+    <section class="section" id="mercado" style="background: rgba(43,29,20, 0.03);">
+        <h2 class="section-title fantasy">Mercado e <span class="text-accent">Aplicações</span></h2>
+        
+        <div class="grid-2" style="margin-top: 40px;">
+            <div class="card">
+                <h3 class="fantasy">Áreas de Atuação</h3>
+                <ul style="line-height: 2;">
+                    <li>🛡️ Sistemas Seguros e Segurança da Informação</li>
+                    <li>🎮 Desenvolvimento de Jogos</li>
+                    <li>🗄️ Bancos de Dados de Alta Performance</li>
+                    <li>🌐 Desenvolvimento Web Avançado</li>
+                    <li>🚀 Centenas de outras aplicações...</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 class="fantasy">Grandes Empresas</h3>
+                <p class="section-subtitle" style="font-size: 0.95rem;">Empresas gigantes e projetos cruciais que já adotaram Rust:</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px;">
+                    <span class="badge">Microsoft</span>
+                    <span class="badge">Google</span>
+                    <span class="badge">Governo dos EUA (NSA, CIA)</span>
+                    <span class="badge">Nubank</span>
+                    <span class="badge">Santander</span>
+                    <span class="badge">iFood</span>
+                    <span class="badge">Uber</span>
+                    <span class="badge">Embraer</span>
+                    <span class="badge">Kernel Linux</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 24px;">
+            <h3 class="fantasy">Projetos Feitos em Rust</h3>
+            <div class="saga-grid">
+                <div class="badge" style="text-align: center;"><strong>Deno</strong> (Runtime)</div>
+                <div class="badge" style="text-align: center;"><strong>Bun</strong> (Runtime/Bundler)</div>
+                <div class="badge" style="text-align: center;"><strong>Polars</strong> (Dados Python)</div>
+                <div class="badge" style="text-align: center;"><strong>Redox</strong> (Sistema Operacional)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O que vamos aprender (Cards Expansíveis) -->
+    <section class="section" id="conteudo">
+        <h2 class="section-title fantasy">Até onde <span class="text-accent">vamos?</span></h2>
+        <p class="section-subtitle">Clique nos cards para expandir o conteúdo de cada módulo da masterclass.</p>
+
+        <div class="saga-grid">
+            <div class="saga-card" onclick="this.classList.toggle('active')">
+                <h3 class="fantasy">Fundamentos Interiores</h3>
+                <div class="card-content">
+                    <ul>
+                        <li>Funcionamento da memória</li>
+                        <li>Funcionamento do compilador Rust</li>
+                        <li>Sintaxe da linguagem</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="saga-card" onclick="this.classList.toggle('active')">
+                <h3 class="fantasy">Técnicas de Desenvolvimento</h3>
+                <div class="card-content">
+                    <ul>
+                        <li>Código Limpo (Clean Code)</li>
+                        <li>Conceito KISS (Keep It Simple, Stupid)</li>
+                        <li>Conceito DRY (Don't Repeat Yourself)</li>
+                        <li>Ergonomia de código</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="saga-card" onclick="this.classList.toggle('active')">
+                <h3 class="fantasy">Aplicações Práticas</h3>
+                <div class="card-content">
+                    <ul>
+                        <li>Introdução a projetos reais</li>
+                        <li>Introdução ao desenvolvimento WEB em Rust</li>
+                        <li>Conexão simples com banco de dados</li>
+                        <li>Como baixar e criar Bibliotecas em Rust</li>
+                        <li>Integração com a Comunidade</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="soft">
+
+    <!-- Playgrounds Embutidos -->
+    <section class="section" id="pratica">
+        <h2 class="section-title fantasy">Mão na <span class="text-accent">Massa</span></h2>
+        <p class="section-subtitle">Pratique diretamente no navegador com os códigos da Masterclass (Rust Playground).</p>
+
+        <a href="https://rust-lang.org/tools/install/" target="_blank" class="btn-epic">Baixar o Rust</a>
+        <a href="https://play.rust-lang.org" target="_blank" class="btn-epic">Usar no Navegador</a>
+
+        <!-- Hello World -->
+        <div class="card">
+            <h3 class="fantasy">1. Hello World & Mensagens</h3>
+            <p class="section-subtitle">O primeiro passo na jornada. Entendendo a estrutura básica de um programa.</p>
+            <div class="iframe-container">
+                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=0deb2825abaad0eebac9f80ca17d6a7c" title="Rust Playground - Hello World"></iframe>
+            </div>
+        </div>
+
+        <!-- Idade -->
+        <div class="card">
+            <h3 class="fantasy">2. Idade</h3>
+            <div class="iframe-container">
+                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=a5fd5b44760d960b9bbe34b301b6e75a" title="Rust Playground - Idade"></iframe>
+            </div>
+        </div>
+
+        <!-- Tipos -->
+        <div class="card">
+            <h3 class="fantasy">3. Tipos de Dados</h3>
+            <p class="section-subtitle">Conhecendo o sistema forte de tipagem estática do Rust.</p>
+            <div class="iframe-container">
+                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=c34c2f473f7ccbd0432286d8b64008d6" title="Rust Playground - Tipos"></iframe>
+            </div>
+        </div>
+
+        <!-- Ortogonalidade -->
+        <div class="card">
+            <h3 class="fantasy">4. Ortogonalidade</h3>
+            <div class="iframe-container">
+                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=6ab579193994195403f64bacfeaced12" title="Rust Playground - Ortogonalidade"></iframe>
+            </div>
+        </div>
+
+        <!-- Desestruturação -->
+        <div class="card">
+            <h3 class="fantasy">5. Desestruturação (Destructuring)</h3>
+            <div class="iframe-container">
+                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=bf56367e4e8bf433bd7d4ffc761cce87" title="Rust Playground - Desestruturacao"></iframe>
+            </div>
+        </div>
+
+        <!-- Imutabilidade -->
+        <div class="card">
+            <h3 class="fantasy">6. Imutabilidade</h3>
+            <p class="section-subtitle">Por padrão, as variáveis em Rust são imutáveis para garantir a segurança da memória.</p>
+            <div class="iframe-container">
+                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=22726494be5450a36178fd394d1edee5" title="Rust Playground - Imutabilidade"></iframe>
+            </div>
+        </div>
+
+        <!-- Shadowing -->
+        <div class="card">
+            <h3 class="fantasy">7. Shadowing (Sombreamento)</h3>
+            <p class="section-subtitle">Como redeclarar uma variável utilizando o mesmo nome no mesmo escopo.</p>
+            <div class="iframe-container">
+                <iframe src="https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=d0c87c9e5c30eb24f771c4196afa9697" title="Rust Playground - Shadowing"></iframe>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <a href="inscricao.html" class="btn-epic">Garantir Minha Vaga</a>
+            <!-- <a href="https://pay.hotmart.com/J106346650N" class="btn-epic">Comprar com Hotmart</a>  -->
+            <a href="https://pay.hotmart.com/J106346650N" class="btn-epic"
+                onclick="return gtag_report_conversion('https://pay.hotmart.com/J106346650N');">
+                Comprar com Hotmart
+            </a>
+        </div>
+        
+    </section>
+
+</body>
+</html>
