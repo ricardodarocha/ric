@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOÃO-DE-BARRO — International Typographic Style Landing Page</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Space Grotesk & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        swiss: {
+                            bg: '#F5F5F3',
+                            card: '#FFFFFF',
+                            black: '#111111',
+                            red: '#E63946',
+                            blue: '#0055FF',
+                            orange: '#FF6B00',
+                            border: '#111111',
+                            muted: '#777777',
+                            lightgrey: '#E8E8E5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F5F5F3;
+            color: #111111;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .grid-border-t { border-top: 1px solid #111111; }
+        .grid-border-b { border-bottom: 1px solid #111111; }
+        .grid-border-l { border-left: 1px solid #111111; }
+        .grid-border-r { border-right: 1px solid #111111; }
+        
+        .swiss-btn {
+            background-color: #111111;
+            color: #FFFFFF;
+            transition: all 0.15s ease-in-out;
+            font-family: 'Space Grotesk', monospace;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .swiss-btn:hover {
+            background-color: #E63946;
+            color: #FFFFFF;
+        }
+        .swiss-btn-outline {
+            border: 1px solid #111111;
+            color: #111111;
+            transition: all 0.15s ease-in-out;
+            font-family: 'Space Grotesk', monospace;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .swiss-btn-outline:hover {
+            background-color: #111111;
+            color: #FFFFFF;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #F5F5F3; }
+        ::-webkit-scrollbar-thumb { background: #111111; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-swiss-red selection:text-white">
+
+    <!-- TOP HEADER / NAV -->
+    <header class="sticky top-0 z-50 bg-swiss-bg/95 backdrop-blur-md grid-border-b">
+        <div class="max-w-7xl mx-auto grid grid-cols-12 divide-x divide-swiss-black text-xs font-mono">
+            <div class="col-span-12 md:col-span-4 p-4 flex items-center justify-between">
+                <a href="#" class="font-bold tracking-tighter text-sm md:text-base flex items-center gap-2">
+                    <span class="w-3 h-3 bg-swiss-red inline-block"></span>
+                    <span>JOÃO-DE-BARRO</span>
+                    <span class="text-swiss-muted font-normal">/ OVENBIRD</span>
+                </a>
+                <span class="text-[10px] bg-swiss-black text-white px-2 py-0.5 uppercase tracking-widest font-mono">v2026.4</span>
+            </div>
+            
+            <nav class="hidden md:flex col-span-8 divide-x divide-swiss-black items-center font-medium">
+                <a href="#concept" class="flex-1 py-4 text-center hover:bg-swiss-black hover:text-white transition-colors">01 CONCEPT</a>
+                <a href="#technical" class="flex-1 py-4 text-center hover:bg-swiss-black hover:text-white transition-colors">02 TECH SPECS</a>
+                <a href="#modules" class="flex-1 py-4 text-center hover:bg-swiss-black hover:text-white transition-colors">03 MODULES</a>
+                <a href="#downloads" class="flex-1 py-4 text-center hover:bg-swiss-black hover:text-white transition-colors">04 DOWNLOADS</a>
+                <a href="#contact" class="flex-1 py-4 text-center bg-swiss-red text-white hover:bg-swiss-black transition-colors">05 CONTACT</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="max-w-7xl mx-auto w-full grid-border-b">
+        <!-- Main Headline Bar -->
+        <div class="p-6 md:p-12 bg-swiss-bg grid-border-b">
+            <div class="text-xs font-mono uppercase tracking-widest text-swiss-red font-bold mb-3 flex items-center gap-2">
+                <span class="animate-pulse w-2 h-2 rounded-full bg-swiss-red"></span>
+                CLIMATE RESILIENCE & URBAN FLOOD PREVENTATIVE INFRASTRUCTURE
+            </div>
+            <h1 class="text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.88] mb-6">
+                URBAN CLIMATE<br>
+                <span class="text-swiss-red">MONITORING</span> &<br>
+                SYMBIOTIC LUMINAIRE
+            </h1>
+            <p class="text-lg md:text-2xl font-light text-swiss-black max-w-3xl leading-snug">
+                An IoT-integrated urban infrastructure node engineered for real-time river level tracking, climate telemetry, and biomimetic urban avian nesting.
+            </p>
+        </div>
+
+        <!-- Hero Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-swiss-black">
+            
+            <!-- Hero Render Visual Showcase -->
+            <div class="lg:col-span-7 p-6 md:p-8 bg-white flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-4 font-mono text-xs">
+                    <span class="bg-swiss-lightgrey px-2 py-1 font-bold">FIG 1.0 — SATIN WHITE HARDWARE</span>
+                    <span class="text-swiss-muted">HEIGHT: ~280MM / DIA: ~120MM</span>
+                </div>
+
+                <!-- Product Display Image -->
+                <div class="relative group my-4 flex items-center justify-center p-8 bg-swiss-bg border border-swiss-black rounded-sm overflow-hidden min-h-[380px]">
+                    <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1k91wEh9PsEiQ4Sv9yCtekKX1bcT1C12MJyc_O0TswtPhrpLJEYdeDGB2rIXzQfRVCwbnu1Jiytgm6Z4IgxO_FQSttx43mEi7GQYasdkvMq1QDJXXv0iojWR_bJYFPDmBnzRb85sO7G3kU9JokukGlDTFUlpFqRcpSMKh1yRyqsQRc8kA" 
+                         alt="João-de-Barro Satin White Render" 
+                         class="max-h-[360px] object-contain transform group-hover:scale-105 transition-transform duration-500">
+                    
+                    <div id="hero-led-badge" class="absolute bottom-4 left-4 bg-swiss-blue text-white px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider transition-colors duration-300">
+                        STATUS: NORMAL (BLUE LED)
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 font-mono text-xs pt-4 border-t border-swiss-black">
+                    <div>
+                        <span class="text-swiss-muted block">HOUSING</span>
+                        <span class="font-bold">Satin Ceramic / PLA</span>
+                    </div>
+                    <div>
+                        <span class="text-swiss-muted block">ELEVATION BASE</span>
+                        <span class="font-bold">3.0m Safe Line</span>
+                    </div>
+                    <div>
+                        <span class="text-swiss-muted block">COMMUNICATION</span>
+                        <span class="font-bold">Wi-Fi / LoRa / PoE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Live Simulator Control -->
+            <div class="lg:col-span-5 p-6 md:p-8 bg-swiss-bg flex flex-col justify-between font-mono">
+                <div>
+                    <div class="flex items-center justify-between pb-4 border-b border-swiss-black mb-6">
+                        <span class="text-xs font-bold uppercase text-swiss-red">LIVE TELEMETRY SIMULATOR</span>
+                        <span class="text-xs text-swiss-muted">INTERACTIVE CONTROL</span>
+                    </div>
+
+                    <!-- Water Level Gauge -->
+                    <div class="mb-8">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <label class="text-xs uppercase font-bold">RIVER WATER LEVEL</label>
+                            <span id="river-level-val" class="text-2xl font-black text-swiss-blue">1.8 m</span>
+                        </div>
+                        
+                        <!-- Slider Input -->
+                        <input type="range" id="river-slider" min="0.5" max="5.0" step="0.1" value="1.8" 
+                               class="w-full h-3 bg-swiss-lightgrey border border-swiss-black accent-swiss-black cursor-pointer">
+                        
+                        <div class="flex justify-between text-[10px] text-swiss-muted mt-1">
+                            <span>0.5m (SAFE)</span>
+                            <span>2.5m (WARNING)</span>
+                            <span>4.0m+ (FLOOD)</span>
+                        </div>
+                    </div>
+
+                    <!-- Status Display Box -->
+                    <div id="sim-status-box" class="p-4 border-2 border-swiss-black bg-white mb-6 transition-colors duration-300">
+                        <div class="text-[10px] uppercase text-swiss-muted mb-1">SYSTEM WARNING STATE</div>
+                        <div id="sim-status-title" class="text-xl font-bold uppercase text-swiss-blue">NORMAL OPERATIONAL STATE</div>
+                        <p id="sim-status-desc" class="text-xs font-sans text-swiss-black mt-2 leading-relaxed">
+                            Water depth within historical safety margin. LED ring illuminated in cool status blue.
+                        </p>
+                    </div>
+
+                    <!-- Secondary Metrics -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-3 bg-white border border-swiss-black">
+                            <span class="text-[10px] text-swiss-muted block">AMBIENT TEMP</span>
+                            <span class="text-lg font-bold">24.5 °C</span>
+                        </div>
+                        <div class="p-3 bg-white border border-swiss-black">
+                            <span class="text-[10px] text-swiss-muted block">HUMIDITY</span>
+                            <span class="text-lg font-bold">78 %</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Action Buttons -->
+                <div class="pt-6 border-t border-swiss-black mt-6 space-y-2">
+                    <button onclick="setSimLevel(1.5)" class="w-full py-2 text-xs swiss-btn-outline">SET NORMAL LEVEL (1.5M)</button>
+                    <button onclick="setSimLevel(2.8)" class="w-full py-2 text-xs swiss-btn-outline">SET WARNING LEVEL (2.8M)</button>
+                    <button onclick="setSimLevel(4.2)" class="w-full py-2 text-xs bg-swiss-red text-white font-bold hover:bg-swiss-black transition-colors">TRIGGER FLOOD CRITICAL (4.2M)</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 01: CONCEPT & BIOMIMICRY -->
+    <section id="concept" class="max-w-7xl mx-auto w-full grid-border-b">
+        <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-swiss-black">
+            
+            <!-- Left Info Panel -->
+            <div class="lg:col-span-5 p-6 md:p-12 bg-swiss-bg">
+                <span class="text-xs font-mono font-bold text-swiss-red uppercase tracking-widest block mb-2">SECTION 01</span>
+                <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight mb-6">BIOMIMETICS & URBAN SYMBIOSIS</h2>
+                
+                <p class="text-sm md:text-base font-normal leading-relaxed text-swiss-black mb-4">
+                    Urbanization and climate change have severely altered traditional riverfront dynamics. Flash flooding and river surges require non-intrusive, continuous surveillance.
+                </p>
+                <p class="text-sm md:text-base font-normal leading-relaxed text-swiss-black mb-6">
+                    Inspired by the <strong>Rufous Hornero</strong> (<em>João-de-Barro</em>), which constructs resilient mud nests on street poles and structures, our luminaire doubles as a smart sensor station and an artificial nesting habitat for indigenous bird species.
+                </p>
+
+                <div class="p-4 bg-white border border-swiss-black font-mono text-xs space-y-2">
+                    <div class="font-bold uppercase text-swiss-red">ECOLOGICAL ADVANTAGES</div>
+                    <ul class="list-disc pl-4 space-y-1 text-swiss-black">
+                        <li>Restores native avian nesting habitats in urban centers.</li>
+                        <li>Non-interfering thermal isolation between nest and electronics.</li>
+                        <li>100% weather-resistant ceramic and recycled composite housing.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Interactive Clearance & Elevation Graphic -->
+            <div class="lg:col-span-7 p-6 md:p-12 bg-white flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-6 font-mono text-xs">
+                        <span class="font-bold uppercase">FIG 1.1 — 3-METER BASELINE ELEVATION SCHEMATIC</span>
+                        <span class="text-swiss-red font-bold">CRITICAL SAFETY ZONE</span>
+                    </div>
+
+                    <!-- SVG Diagram -->
+                    <div class="w-full bg-swiss-bg border border-swiss-black p-4 md:p-8">
+                        <svg viewBox="0 0 600 320" class="w-full h-auto" font-family="Space Grotesk, monospace">
+                            <!-- Background Grid Lines -->
+                            <line x1="0" y1="80" x2="600" y2="80" stroke="#E8E8E5" stroke-width="1" stroke-dasharray="4"/>
+                            <line x1="0" y1="160" x2="600" y2="160" stroke="#E8E8E5" stroke-width="1" stroke-dasharray="4"/>
+                            <line x1="0" y1="240" x2="600" y2="240" stroke="#E8E8E5" stroke-width="1" stroke-dasharray="4"/>
+
+                            <!-- Bridge Post & Mounting Beam -->
+                            <rect x="80" y="20" width="24" height="260" fill="#111111" />
+                            <path d="M104 50 H180 V90 H160 V70 H104 Z" fill="#111111" />
+
+                            <!-- João-de-Barro Unit Outline -->
+                            <g transform="translate(150, 80)">
+                                <!-- Strap -->
+                                <path d="M 15 -30 C 15 -45, 25 -45, 25 -30 L 25 0 L 15 0 Z" fill="#777" />
+                                <!-- Shell Top -->
+                                <path d="M 0 0 C 0 -25, 40 -25, 40 0 L 40 45 L 0 45 Z" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+                                <!-- Bird Hole -->
+                                <circle cx="28" cy="20" r="10" fill="#111111" />
+                                <!-- LED Ring -->
+                                <rect x="0" y="45" width="40" height="6" fill="#0055FF" id="svg-led-strip" />
+                                <!-- Shell Bottom -->
+                                <path d="M 0 51 L 40 51 L 36 80 L 4 80 Z" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+                                <!-- Sensor Beam -->
+                                <circle cx="20" cy="84" r="4" fill="#E63946" />
+                                <!-- Ultrasonic Sound Waves -->
+                                <path d="M 10 95 C 15 102, 25 102, 30 95" fill="none" stroke="#E63946" stroke-width="1.5" stroke-dasharray="2"/>
+                                <path d="M 5 105 C 15 115, 25 115, 35 105" fill="none" stroke="#E63946" stroke-width="1.5" stroke-dasharray="2"/>
+                            </g>
+
+                            <!-- Elevation Line Annotations -->
+                            <line x1="220" y1="164" x2="360" y2="164" stroke="#111111" stroke-width="1.5"/>
+                            <text x="370" y="168" font-size="11" font-weight="bold" fill="#111111">3.0m SAFE MOUNTING LINE</text>
+
+                            <!-- Water Line Dynamics -->
+                            <path id="svg-water-path" d="M 0 250 Q 150 245, 300 250 T 600 250 L 600 320 L 0 320 Z" fill="#0055FF" opacity="0.25"/>
+                            <line id="svg-water-line" x1="0" y1="250" x2="600" y2="250" stroke="#0055FF" stroke-width="2"/>
+                            <text x="450" y="240" font-size="11" font-weight="bold" fill="#0055FF" id="svg-water-label">NORMAL WATER LEVEL</text>
+
+                            <!-- Dimension Arrow -->
+                            <line x1="200" y1="164" x2="200" y2="250" stroke="#E63946" stroke-width="1.5" stroke-dasharray="3" id="svg-dim-line"/>
+                            <text x="210" y="210" font-size="11" font-weight="bold" fill="#E63946" id="svg-dim-text">H = 3.0m</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="mt-6 font-mono text-xs text-swiss-muted flex justify-between items-center border-t border-swiss-black pt-4">
+                    <span>* MOUNTED PERMANENTLY AT BASELINE ELEVATION</span>
+                    <span class="text-swiss-black font-bold">100% NON-SUBMERSIBLE DESIGN</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 02: TECHNICAL SPECIFICATIONS -->
+    <section id="technical" class="max-w-7xl mx-auto w-full grid-border-b">
+        <div class="p-6 md:p-12 bg-swiss-bg grid-border-b">
+            <span class="text-xs font-mono font-bold text-swiss-red uppercase tracking-widest block mb-2">SECTION 02</span>
+            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">TECHNICAL SPECIFICATIONS</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-swiss-black">
+            
+            <!-- Specs Table -->
+            <div class="lg:col-span-7 p-6 md:p-8 bg-white font-mono text-xs">
+                <div class="font-bold uppercase text-sm mb-4 pb-2 border-b border-swiss-black flex justify-between">
+                    <span>HARDWARE ARCHITECTURE MATRIX</span>
+                    <span class="text-swiss-red">REV 4.2</span>
+                </div>
+
+                <div class="divide-y divide-swiss-lightgrey border-b border-swiss-black">
+                    <div class="py-3 grid grid-cols-12">
+                        <span class="col-span-4 font-bold text-swiss-black">MICROCONTROLLER</span>
+                        <span class="col-span-8 text-swiss-black">ESP32 WROOM 32D (Dual Core 240MHz, Wi-Fi / BLE)</span>
+                    </div>
+                    <div class="py-3 grid grid-cols-12">
+                        <span class="col-span-4 font-bold text-swiss-black">ULTRASONIC RANGE</span>
+                        <span class="col-span-8 text-swiss-black">HC-SR04 Transceiver (Range: 2cm – 400cm / Accuracy ±3mm)</span>
+                    </div>
+                    <div class="py-3 grid grid-cols-12">
+                        <span class="col-span-4 font-bold text-swiss-black">CLIMATE SENSORS</span>
+                        <span class="col-span-8 text-swiss-black">DHT22 Digital Temperature (-40 to 80°C) & Relative Humidity</span>
+                    </div>
+                    <div class="py-3 grid grid-cols-12">
+                        <span class="col-span-4 font-bold text-swiss-black">STATUS LIGHTING</span>
+                        <span class="col-span-8 text-swiss-black">Addressable RGB LED Strip (360° Diffusion Lens)</span>
+                    </div>
+                    <div class="py-3 grid grid-cols-12">
+                        <span class="col-span-4 font-bold text-swiss-black">CONNECTIVITY</span>
+                        <span class="col-span-8 text-swiss-black">Wi-Fi (802.11 b/g/n), Ethernet RJ45 (PoE 5V), LoRaWAN 915MHz</span>
+                    </div>
+                    <div class="py-3 grid grid-cols-12">
+                        <span class="col-span-4 font-bold text-swiss-black">POWER SUPPLY</span>
+                        <span class="col-span-8 text-swiss-black">5V DC Bus / PoE / Compatible with Solar Array Station</span>
+                    </div>
+                    <div class="py-3 grid grid-cols-12">
+                        <span class="col-span-4 font-bold text-swiss-black">ENCLOSURE</span>
+                        <span class="col-span-8 text-swiss-black">Satin Ceramic / Recycled PETG (IP67 Rated Chamber)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block Diagram Toggle & Display -->
+            <div class="lg:col-span-5 p-6 md:p-8 bg-swiss-bg font-mono flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-6 pb-2 border-b border-swiss-black">
+                        <span class="text-xs font-bold uppercase">SYSTEM BLOCK DIAGRAM</span>
+                        <button onclick="toggleDiagramMode()" id="diag-btn" class="text-[10px] swiss-btn px-2 py-1">TOGGLE PINOUT VIEW</button>
+                    </div>
+
+                    <!-- Schematic Display Container -->
+                    <div id="diagram-container" class="p-6 bg-white border border-swiss-black text-center min-h-[260px] flex flex-col justify-center items-center">
+                        <!-- Functional Diagram View -->
+                        <div id="diag-functional" class="w-full space-y-4 text-xs">
+                            <div class="p-2 border border-swiss-black bg-swiss-lightgrey font-bold">INPUT: POWER (5V PoE / SOLAR)</div>
+                            <div class="flex items-center justify-center gap-2">
+                                <span class="p-2 border border-swiss-black bg-white">HC-SR04</span>
+                                <span class="text-swiss-red">➔</span>
+                                <span class="p-3 border-2 border-swiss-black bg-swiss-black text-white font-bold">ESP32 CORE</span>
+                                <span class="text-swiss-red">➔</span>
+                                <span class="p-2 border border-swiss-black bg-white">DHT22</span>
+                            </div>
+                            <div class="p-2 border border-swiss-black bg-swiss-blue text-white font-bold">OUTPUT: RGB LED / LORA / CLOUD API</div>
+                        </div>
+
+                        <!-- Pinout View (Hidden by default) -->
+                        <div id="diag-pinout" class="hidden w-full text-[11px] text-left space-y-2">
+                            <div class="font-bold border-b border-swiss-black pb-1">ESP32 GPIO PIN MAPPING:</div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>• GPIO 12: HC-SR04 TRIG</div>
+                                <div>• GPIO 13: HC-SR04 ECHO</div>
+                                <div>• GPIO 04: DHT22 DATA</div>
+                                <div>• GPIO 15: LED STRIP DIN</div>
+                                <div>• GPIO 16: RX2 (LORA)</div>
+                                <div>• GPIO 17: TX2 (LORA)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-swiss-black text-[10px] text-swiss-muted">
+                    * FULL CAD HARDWARE SCHEMATICS AVAILABLE IN DOWNLOADS SECTION
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 03: MODULAR EXPANSION -->
+    <section id="modules" class="max-w-7xl mx-auto w-full grid-border-b">
+        <div class="p-6 md:p-12 bg-swiss-bg grid-border-b">
+            <span class="text-xs font-mono font-bold text-swiss-red uppercase tracking-widest block mb-2">SECTION 03</span>
+            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight mb-2">EXPANSION MODULES</h2>
+            <p class="text-sm font-mono text-swiss-muted">MINIMALIST STROKE DRAWINGS & FUNCTIONAL ATTACHMENTS</p>
+        </div>
+
+        <!-- Modules Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-swiss-black bg-white">
+            
+            <!-- Module 1: High-Power Luminaire -->
+            <div class="p-6 flex flex-col justify-between hover:bg-swiss-bg transition-colors">
+                <div>
+                    <div class="text-xs font-mono font-bold text-swiss-muted mb-4">03.1 / LIGHTING</div>
+                    
+                    <!-- SVG Stroke Icon -->
+                    <div class="h-32 flex items-center justify-center my-4 border border-swiss-black bg-white p-4">
+                        <svg viewBox="0 0 100 80" class="h-full w-auto" stroke="#111111" stroke-width="2" fill="none">
+                            <path d="M 20 20 L 70 10 L 80 40 L 30 50 Z" />
+                            <circle cx="75" cy="25" r="10" />
+                            <line x1="75" y1="25" x2="95" y2="25" stroke-dasharray="2" />
+                            <path d="M 35 48 L 35 65 L 45 65" />
+                        </svg>
+                    </div>
+
+                    <h3 class="font-mono font-bold text-sm uppercase mb-2">COB LED LUMINAIRE</h3>
+                    <p class="text-xs text-swiss-muted leading-relaxed">
+                        High-lumen COB LED head fixture for public street and pathway illumination during power loss events.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-swiss-black mt-6 font-mono text-[10px] font-bold">
+                    CONSUMPTION: 12W / 1200 LUMENS
+                </div>
+            </div>
+
+            <!-- Module 2: Acoustic Siren -->
+            <div class="p-6 flex flex-col justify-between hover:bg-swiss-bg transition-colors">
+                <div>
+                    <div class="text-xs font-mono font-bold text-swiss-muted mb-4">03.2 / AUDIO</div>
+                    
+                    <!-- SVG Stroke Icon -->
+                    <div class="h-32 flex items-center justify-center my-4 border border-swiss-black bg-white p-4">
+                        <svg viewBox="0 0 100 80" class="h-full w-auto" stroke="#111111" stroke-width="2" fill="none">
+                            <path d="M 15 25 L 40 25 L 75 10 L 75 70 L 40 55 L 15 55 Z" />
+                            <path d="M 83 25 C 90 35, 90 45, 83 55" stroke-dasharray="2" />
+                            <path d="M 90 18 C 100 35, 100 50, 90 65" />
+                        </svg>
+                    </div>
+
+                    <h3 class="font-mono font-bold text-sm uppercase mb-2">ACOUSTIC WARNING SIREN</h3>
+                    <p class="text-xs text-swiss-muted leading-relaxed">
+                        High-decibel piezo acoustic horn for direct local community flood alerts and emergency broadcasts.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-swiss-black mt-6 font-mono text-[10px] font-bold">
+                    OUTPUT: 115dB @ 1M DISTANCE
+                </div>
+            </div>
+
+            <!-- Module 3: Strobe Beacon -->
+            <div class="p-6 flex flex-col justify-between hover:bg-swiss-bg transition-colors">
+                <div>
+                    <div class="text-xs font-mono font-bold text-swiss-muted mb-4">03.3 / VISUAL</div>
+                    
+                    <!-- SVG Stroke Icon -->
+                    <div class="h-32 flex items-center justify-center my-4 border border-swiss-black bg-white p-4">
+                        <svg viewBox="0 0 100 80" class="h-full w-auto" stroke="#111111" stroke-width="2" fill="none">
+                            <rect x="30" y="25" width="40" height="45" rx="3" />
+                            <line x1="50" y1="25" x2="50" y2="70" />
+                            <path d="M 35 15 L 50 22 L 65 15" stroke-dasharray="2" />
+                            <line x1="50" y1="10" x2="50" y2="20" />
+                        </svg>
+                    </div>
+
+                    <h3 class="font-mono font-bold text-sm uppercase mb-2">ROTATING GYRO STROBE</h3>
+                    <p class="text-xs text-swiss-muted leading-relaxed">
+                        High-intensity omnidirectional rotating beacon for critical emergency signaling visible through rain.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-swiss-black mt-6 font-mono text-[10px] font-bold">
+                    VISIBILITY: 360° / 1.5 KM RANGE
+                </div>
+            </div>
+
+            <!-- Module 4: Environmental Camera -->
+            <div class="p-6 flex flex-col justify-between hover:bg-swiss-bg transition-colors">
+                <div>
+                    <div class="text-xs font-mono font-bold text-swiss-muted mb-4">03.4 / OPTICAL</div>
+                    
+                    <!-- SVG Stroke Icon -->
+                    <div class="h-32 flex items-center justify-center my-4 border border-swiss-black bg-white p-4">
+                        <svg viewBox="0 0 100 80" class="h-full w-auto" stroke="#111111" stroke-width="2" fill="none">
+                            <rect x="15" y="30" width="35" height="30" />
+                            <path d="M 50 35 L 80 20 L 80 70 L 50 55 Z" />
+                            <circle cx="32" cy="45" r="7" />
+                        </svg>
+                    </div>
+
+                    <h3 class="font-mono font-bold text-sm uppercase mb-2">ENVIRONMENTAL CAMERA</h3>
+                    <p class="text-xs text-swiss-muted leading-relaxed">
+                        Optical lens module for automated visual riverbed monitoring and civil defense surveillance.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-swiss-black mt-6 font-mono text-[10px] font-bold">
+                    RESOLUTION: 1080P HD / NIGHT VISION
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 04: DOWNLOADS & ASSETS -->
+    <section id="downloads" class="max-w-7xl mx-auto w-full grid-border-b">
+        <div class="p-6 md:p-12 bg-swiss-bg grid-border-b">
+            <span class="text-xs font-mono font-bold text-swiss-red uppercase tracking-widest block mb-2">SECTION 04</span>
+            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">DOCUMENTATION & DOWNLOADS</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-swiss-black bg-white font-mono">
+            
+            <!-- Download Item 1 -->
+            <div class="p-8 flex flex-col justify-between border-b md:border-b-0 border-swiss-black">
+                <div>
+                    <div class="text-xs text-swiss-red font-bold mb-2">[PDF] DOCUMENT</div>
+                    <h3 class="text-lg font-bold uppercase mb-2">TECHNICAL SPECIFICATION DOC</h3>
+                    <p class="text-xs text-swiss-muted font-sans mb-6">
+                        Complete 8-page official technical manual in English detailing biomimicry, IoT hardware, and Civil Defense integration protocols.
+                    </p>
+                </div>
+                <button onclick="triggerDownload('Joao_de_Barro_Technical_Spec.pdf')" class="w-full py-3 swiss-btn text-xs">
+                    DOWNLOAD PDF (2.4 MB)
+                </button>
+            </div>
+
+            <!-- Download Item 2 -->
+            <div class="p-8 flex flex-col justify-between border-b md:border-b-0 border-swiss-black">
+                <div>
+                    <div class="text-xs text-swiss-blue font-bold mb-2">[CAD] 3D MESH</div>
+                    <h3 class="text-lg font-bold uppercase mb-2">3D PRINT STL / STEP FILES</h3>
+                    <p class="text-xs text-swiss-muted font-sans mb-6">
+                        Open-source 3D printable files for Satin Ceramic, PETG, or PLA production of housing and internal mounting rails.
+                    </p>
+                </div>
+                <button onclick="triggerDownload('Joao_de_Barro_3D_CAD.zip')" class="w-full py-3 swiss-btn text-xs">
+                    DOWNLOAD STL MESH (18.1 MB)
+                </button>
+            </div>
+
+            <!-- Download Item 3 -->
+            <div class="p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-xs text-swiss-orange font-bold mb-2">[API] PROTOCOL</div>
+                    <h3 class="text-lg font-bold uppercase mb-2">CIVIL DEFENSE MQTT SPEC</h3>
+                    <p class="text-xs text-swiss-muted font-sans mb-6">
+                        API schema, MQTT topic structures, and integration guidelines for emergency services, iOS/Android & Apple Watch apps.
+                    </p>
+                </div>
+                <button onclick="triggerDownload('Civil_Defense_API_Protocol.json')" class="w-full py-3 swiss-btn text-xs">
+                    DOWNLOAD API SPEC (512 KB)
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 05: DEPLOYMENT ESTIMATOR & CONTACT -->
+    <section id="contact" class="max-w-7xl mx-auto w-full grid-border-b">
+        <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-swiss-black">
+            
+            <!-- Deployment Calculator -->
+            <div class="lg:col-span-6 p-6 md:p-12 bg-swiss-bg font-mono">
+                <span class="text-xs font-bold text-swiss-red uppercase tracking-widest block mb-2">CALCULATOR</span>
+                <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight mb-6">MUNICIPAL COVERAGE ESTIMATOR</h2>
+
+                <div class="space-y-6 bg-white p-6 border border-swiss-black">
+                    <div>
+                        <label class="text-xs font-bold uppercase block mb-2">NUMBER OF BRIDGES / MONITORING STATIONS</label>
+                        <input type="number" id="calc-bridges" value="4" min="1" max="50" oninput="calculateDeployment()"
+                               class="w-full p-3 border border-swiss-black text-lg font-bold">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold uppercase block mb-2">REQUIRED EXPANSION MODULES</label>
+                        <div class="space-y-2 text-xs">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" id="mod-siren" checked onchange="calculateDeployment()" class="accent-swiss-black">
+                                <span>ACOUSTIC WARNING SIREN (+115dB)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" id="mod-led" checked onchange="calculateDeployment()" class="accent-swiss-black">
+                                <span>COB HIGH-LUMEN EMERGENCY LIGHTING</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" id="mod-lora" onchange="calculateDeployment()" class="accent-swiss-black">
+                                <span>LONG-RANGE LORAWAN RADIO GATEWAY</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-swiss-bg border-t border-swiss-black space-y-2 text-xs">
+                        <div class="flex justify-between">
+                            <span class="text-swiss-muted">RECOMMENDED UNITS:</span>
+                            <span id="est-units" class="font-bold text-sm">8 UNITS</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-swiss-muted">ESTIMATED COVERAGE:</span>
+                            <span id="est-coverage" class="font-bold text-sm">12.0 KM RIVERBANK</span>
+                        </div>
+                        <div class="flex justify-between border-t border-swiss-black pt-2 text-swiss-red">
+                            <span class="font-bold">EST. HARDWARE COST RANGE:</span>
+                            <span id="est-cost" class="font-bold text-sm">$1,200 – $1,800 USD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="lg:col-span-6 p-6 md:p-12 bg-white">
+                <span class="text-xs font-mono font-bold text-swiss-red uppercase tracking-widest block mb-2">SECTION 05</span>
+                <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight mb-6">MUNICIPAL INQUIRY</h2>
+
+                <form onsubmit="handleFormSubmit(event)" class="space-y-4 font-mono text-xs">
+                    <div>
+                        <label class="block uppercase font-bold mb-1">MUNICIPALITY / ORGANIZATION *</label>
+                        <input type="text" required placeholder="e.g., City Hall Civil Defense" class="w-full p-3 border border-swiss-black bg-swiss-bg">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block uppercase font-bold mb-1">CONTACT NAME *</label>
+                            <input type="text" required placeholder="Full Name" class="w-full p-3 border border-swiss-black bg-swiss-bg">
+                        </div>
+                        <div>
+                            <label class="block uppercase font-bold mb-1">OFFICIAL EMAIL *</label>
+                            <input type="email" required placeholder="name@city.gov" class="w-full p-3 border border-swiss-black bg-swiss-bg">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block uppercase font-bold mb-1">PROJECT DETAILS / LOCATION SPECIFICATIONS</label>
+                        <textarea rows="4" placeholder="Specify river length, historical flood levels, or installation timeline..." class="w-full p-3 border border-swiss-black bg-swiss-bg"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 swiss-btn text-xs font-bold tracking-widest">
+                        SUBMIT MUNICIPAL INQUIRY
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-swiss-black text-white font-mono text-xs py-12 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            <div class="md:col-span-6 space-y-2">
+                <div class="flex items-center gap-2 font-bold text-sm">
+                    <span class="w-3 h-3 bg-swiss-red inline-block"></span>
+                    <span>JOÃO-DE-BARRO / OVENBIRD PROJECT</span>
+                </div>
+                <p class="text-swiss-muted text-[11px] leading-relaxed max-w-md">
+                    International Typographic Style Specification & Web Portal. Designed for climate adaptation, open-source hardware deployment, and symbiotic urban design.
+                </p>
+            </div>
+
+            <div class="md:col-span-3 space-y-1 text-swiss-muted">
+                <div class="text-white font-bold mb-2">QUICK LINKS</div>
+                <div><a href="#concept" class="hover:text-white">01. Concept</a></div>
+                <div><a href="#technical" class="hover:text-white">02. Technical Specs</a></div>
+                <div><a href="#modules" class="hover:text-white">03. Modules</a></div>
+                <div><a href="#downloads" class="hover:text-white">04. Downloads</a></div>
+            </div>
+
+            <div class="md:col-span-3 text-right text-swiss-muted">
+                <div class="text-white font-bold mb-2">RELEASE DATA</div>
+                <div>RELEASE 2026 / VER. 4.2</div>
+                <div>AGENCIA 4D / BRAZIL</div>
+                <div class="text-swiss-red font-bold mt-2">STAY IN A SAFE AREA.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // River Level Live Simulator Logic
+        const slider = document.getElementById('river-slider');
+        const levelVal = document.getElementById('river-level-val');
+        const statusBox = document.getElementById('sim-status-box');
+        const statusTitle = document.getElementById('sim-status-title');
+        const statusDesc = document.getElementById('sim-status-desc');
+        const heroBadge = document.getElementById('hero-led-badge');
+
+        // SVG Elements
+        const svgWaterLine = document.getElementById('svg-water-line');
+        const svgWaterPath = document.getElementById('svg-water-path');
+        const svgWaterLabel = document.getElementById('svg-water-label');
+        const svgLedStrip = document.getElementById('svg-led-strip');
+        const svgDimText = document.getElementById('svg-dim-text');
+
+        function updateSimulation(val) {
+            levelVal.innerText = val.toFixed(1) + ' m';
+            
+            // SVG Water line mapping: 0.5m -> y=290, 5.0m -> y=120
+            const yPos = 290 - ((val - 0.5) / 4.5) * 170;
+            if (svgWaterLine && svgWaterPath) {
+                svgWaterLine.setAttribute('y1', yPos);
+                svgWaterLine.setAttribute('y2', yPos);
+                svgWaterPath.setAttribute('d', `M 0 ${yPos} Q 150 ${yPos-5}, 300 ${yPos} T 600 ${yPos} L 600 320 L 0 320 Z`);
+                if(svgWaterLabel) svgWaterLabel.setAttribute('y', yPos - 10);
+                if(svgDimText) svgDimText.textContent = `H = ${(3.0 + (val - 1.8)).toFixed(1)}m`;
+            }
+
+            if (val < 2.5) {
+                // NORMAL STATE (Blue)
+                levelVal.className = 'text-2xl font-black text-swiss-blue';
+                statusBox.className = 'p-4 border-2 border-swiss-black bg-white mb-6';
+                statusTitle.className = 'text-xl font-bold uppercase text-swiss-blue';
+                statusTitle.innerText = 'NORMAL OPERATIONAL STATE';
+                statusDesc.innerText = 'Water depth within historical safety margin. LED ring illuminated in cool status blue.';
+                
+                heroBadge.className = 'absolute bottom-4 left-4 bg-swiss-blue text-white px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider';
+                heroBadge.innerText = 'STATUS: NORMAL (BLUE LED)';
+                if (svgLedStrip) svgLedStrip.setAttribute('fill', '#0055FF');
+                if (svgWaterLine) svgWaterLine.setAttribute('stroke', '#0055FF');
+
+            } else if (val >= 2.5 && val < 4.0) {
+                // WARNING STATE (Orange)
+                levelVal.className = 'text-2xl font-black text-swiss-orange';
+                statusBox.className = 'p-4 border-2 border-swiss-orange bg-amber-50 mb-6';
+                statusTitle.className = 'text-xl font-bold uppercase text-swiss-orange';
+                statusTitle.innerText = 'ELEVATED LEVEL WARNING';
+                statusDesc.innerText = 'River level rising above baseline. Automatic alert sent to Civil Defense API. LED switched to Orange.';
+                
+                heroBadge.className = 'absolute bottom-4 left-4 bg-swiss-orange text-white px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider';
+                heroBadge.innerText = 'STATUS: WARNING (ORANGE LED)';
+                if (svgLedStrip) svgLedStrip.setAttribute('fill', '#FF6B00');
+                if (svgWaterLine) svgWaterLine.setAttribute('stroke', '#FF6B00');
+
+            } else {
+                // CRITICAL FLOOD STATE (Red)
+                levelVal.className = 'text-2xl font-black text-swiss-red';
+                statusBox.className = 'p-4 border-2 border-swiss-red bg-red-50 mb-6';
+                statusTitle.className = 'text-xl font-bold uppercase text-swiss-red animate-pulse';
+                statusTitle.innerText = 'CRITICAL FLOOD EMERGENCY';
+                statusDesc.innerText = 'FLOOD SURGE IN PROGRESS. Siren activated, acoustic alarms broadcasting, push notifications sent to citizens.';
+                
+                heroBadge.className = 'absolute bottom-4 left-4 bg-swiss-red text-white px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider animate-pulse';
+                heroBadge.innerText = 'STATUS: CRITICAL FLOOD (RED LED & SIREN)';
+                if (svgLedStrip) svgLedStrip.setAttribute('fill', '#E63946');
+                if (svgWaterLine) svgWaterLine.setAttribute('stroke', '#E63946');
+            }
+        }
+
+        slider.addEventListener('input', (e) => {
+            updateSimulation(parseFloat(e.target.value));
+        });
+
+        function setSimLevel(val) {
+            slider.value = val;
+            updateSimulation(val);
+        }
+
+        // Toggle Block Diagram Mode
+        let isPinout = false;
+        function toggleDiagramMode() {
+            isPinout = !isPinout;
+            const functional = document.getElementById('diag-functional');
+            const pinout = document.getElementById('diag-pinout');
+            const btn = document.getElementById('diag-btn');
+
+            if (isPinout) {
+                functional.classList.add('hidden');
+                pinout.classList.remove('hidden');
+                btn.innerText = 'TOGGLE FUNCTIONAL VIEW';
+            } else {
+                functional.classList.remove('hidden');
+                pinout.classList.add('hidden');
+                btn.innerText = 'TOGGLE PINOUT VIEW';
+            }
+        }
+
+        // Deployment Estimator Logic
+        function calculateDeployment() {
+            const bridges = parseInt(document.getElementById('calc-bridges').value) || 1;
+            const hasSiren = document.getElementById('mod-siren').checked;
+            const hasLed = document.getElementById('mod-led').checked;
+            const hasLora = document.getElementById('mod-lora').checked;
+
+            const units = bridges * 2; // 2 units per bridge location
+            const coverage = (bridges * 3.0).toFixed(1);
+
+            let unitCost = 150;
+            if (hasSiren) unitCost += 30;
+            if (hasLed) unitCost += 25;
+            if (hasLora) unitCost += 40;
+
+            const totalMin = units * unitCost;
+            const totalMax = Math.round(totalMin * 1.35);
+
+            document.getElementById('est-units').innerText = `${units} UNITS (${bridges} BRIDGES)`;
+            document.getElementById('est-coverage').innerText = `${coverage} KM RIVERBANK`;
+            document.getElementById('est-cost').innerText = `$${totalMin.toLocaleString()} – $${totalMax.toLocaleString()} USD`;
+        }
+
+        // Mock Download Action
+        function triggerDownload(filename) {
+            const msg = `[DOWNLOAD INITIATED]\nFile: ${filename}\nFormat: High-Resolution Asset\nStatus: Request processed successfully.`;
+            alert(msg);
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('[INQUIRY SUBMITTED]\nThank you. The Civil Defense technical response team will review your project parameters within 24 hours.');
+            e.target.reset();
+        }
+
+        // Initial Calculation
+        calculateDeployment();
+    </script>
+</body>
+</html>

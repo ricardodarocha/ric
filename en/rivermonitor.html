@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor do Rio — João-de-Barro</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter / SF Pro-like font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#F2F2F7',
+                            card: '#FFFFFF',
+                            text: '#1C1C1E',
+                            subtext: '#8E8E93',
+                            blue: '#007AFF',
+                            orange: '#FF9500',
+                            red: '#FF3B30',
+                            green: '#34C759',
+                            darkbg: '#111113'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #E5E5EA;
+            color: #1C1C1E;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Glassmorphism & Custom Apple Shadows */
+        .apple-shadow {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .watch-shadow {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Smooth Level Bar Gradient Animation */
+        .level-bar-gradient {
+            background: linear-gradient(to top, #007AFF 0%, #FF9500 65%, #FF3B30 100%);
+            transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Dynamic Glow depending on state */
+        .glow-blue { filter: drop-shadow(0 0 12px rgba(0, 122, 255, 0.4)); }
+        .glow-orange { filter: drop-shadow(0 0 12px rgba(255, 149, 0, 0.4)); }
+        .glow-red { filter: drop-shadow(0 0 14px rgba(255, 59, 48, 0.6)); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #C7C7CC; border-radius: 4px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-0 md:p-6 lg:p-10 select-none">
+
+    <!-- DESKTOP MODE STUDIO BACKGROUND CONTAINER (> md) -->
+    <div class="w-full max-w-6xl mx-auto flex flex-col items-center justify-center">
+        
+        <!-- HEADER DESKTOP / SIMULATOR BANNER -->
+        <header class="w-full mb-6 hidden md:flex items-center justify-between bg-white/70 backdrop-blur-md p-4 rounded-2xl apple-shadow border border-white/60">
+            <div class="flex items-center gap-3">
+                <span class="w-3.5 h-3.5 rounded-full bg-apple-red inline-block"></span>
+                <span class="w-3.5 h-3.5 rounded-full bg-apple-orange inline-block"></span>
+                <span class="w-3.5 h-3.5 rounded-full bg-apple-green inline-block"></span>
+                <span class="font-bold text-sm tracking-tight ml-2">Monitor do Rio — Sistema João-de-Barro</span>
+            </div>
+            
+            <!-- Real-time Level Slider Control (Desktop Header) -->
+            <div class="flex items-center gap-4 text-xs font-medium bg-apple-bg px-4 py-2 rounded-xl">
+                <span class="text-apple-subtext font-semibold">Simulador de Nível:</span>
+                <input type="range" id="desktop-slider" min="0.5" max="10.0" step="0.1" value="2.1" 
+                       class="w-48 accent-apple-blue cursor-pointer h-1.5 bg-gray-300 rounded-lg">
+                <span id="desktop-slider-val" class="font-bold text-sm min-w-[50px] text-apple-blue">2.1 m</span>
+            </div>
+            
+            <div class="text-xs text-apple-subtext font-mono">
+                Modo Moldura Apple (iPhone + Watch)
+            </div>
+        </header>
+
+        <!-- MAIN MOCKUP WRAPPER: FULL MOBILE ON SMALL, MOCKUP ON MD+ -->
+        <div class="w-full flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-12">
+            
+            <!-- IPHONE DEVICE FRAME -->
+            <div class="w-full md:w-[390px] h-screen md:h-[820px] bg-white md:bg-black md:rounded-[55px] md:p-3 relative apple-shadow md:ring-1 md:ring-gray-900/10 flex flex-col overflow-hidden">
+                
+                <!-- iPhone Outer Bezel / Screen Area -->
+                <div class="w-full h-full bg-apple-bg md:rounded-[44px] flex flex-col justify-between overflow-hidden relative border border-gray-100/50">
+                    
+                    <!-- DYNAMIC ISLAND / NOTCH & STATUS BAR -->
+                    <div class="pt-3 px-7 flex items-center justify-between text-xs font-semibold z-30 bg-apple-bg/80 backdrop-blur-md">
+                        <!-- Time -->
+                        <span id="clock" class="text-sm font-bold tracking-tight">9:41</span>
+                        
+                        <!-- Dynamic Island -->
+                        <div class="w-28 h-7 bg-black rounded-full flex items-center justify-between px-2.5 shadow-sm">
+                            <span class="w-2.5 h-2.5 rounded-full bg-apple-blue animate-pulse" id="island-dot"></span>
+                            <span class="text-[9px] text-white/70 font-mono" id="island-text">LIVE 2.1m</span>
+                        </div>
+
+                        <!-- Icons -->
+                        <div class="flex items-center gap-1.5 text-apple-text">
+                            <!-- Signal -->
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.2c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.42 10.57 19.8 12 19.8c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 14.8c-3.2 0-5.8-2.6-5.8-5.8S8.8 6.2 12 6.2s5.8 2.6 5.8 5.8-2.6 5.8-5.8 5.8z"/></svg>
+                            <!-- Wifi -->
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.82c3.62 0 6.92 1.34 9.47 3.56L12 18.23 2.53 11.38C5.08 9.16 8.38 7.82 12 7.82z"/></svg>
+                            <!-- Battery -->
+                            <div class="w-5 h-2.5 border border-apple-text rounded-sm p-0.5 flex items-center">
+                                <div class="h-full w-full bg-apple-text rounded-xs"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- APP CONTENT CONTAINER (Scrollable) -->
+                    <div class="flex-1 overflow-y-auto px-6 pt-4 pb-6 space-y-5">
+                        
+                        <!-- APP HEADER TITLE -->
+                        <div class="flex justify-between items-end pt-1">
+                            <div>
+                                <span class="text-[11px] font-bold text-apple-subtext uppercase tracking-wider block">Estação João-de-Barro</span>
+                                <h1 class="text-2xl font-black tracking-tight text-apple-text">Monitor do Rio</h1>
+                            </div>
+                            <!-- Status Indicator Pill -->
+                            <span id="status-pill" class="px-3 py-1 rounded-full text-xs font-bold text-white bg-apple-blue transition-colors duration-300 shadow-sm">
+                                Normal
+                            </span>
+                        </div>
+
+                        <!-- MAIN KPI CARD (LEVEL + PROGRESS BAR) -->
+                        <div class="bg-apple-card rounded-3xl p-6 apple-shadow relative overflow-hidden border border-white/80">
+                            <div class="flex justify-between items-stretch">
+                                
+                                <!-- Left Column: Numbers & Secondary Metrics -->
+                                <div class="flex flex-col justify-between pr-4 flex-1">
+                                    <div>
+                                        <span class="text-xs font-semibold text-apple-subtext block mb-1">Nível do Rio</span>
+                                        <div class="flex items-baseline gap-1">
+                                            <span id="main-level-num" class="text-5xl font-black tracking-tight text-apple-text transition-all duration-300">2.1</span>
+                                            <span class="text-xl font-bold text-apple-subtext">m</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Secondary Metrics (Temp & Humidity) -->
+                                    <div class="space-y-3.5 mt-6 pt-5 border-t border-gray-100">
+                                        <!-- Temperature -->
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center text-apple-orange">
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M15 13V5c0-1.66-1.34-3-3-3S9 3.34 9 5v8c-1.21.91-2 2.37-2 4 0 2.76 2.24 5 5 5s5-2.24 5-5c0-1.63-.79-3.09-2-4zm-3 7c-1.66 0-3-1.34-3-3 0-1.02.52-1.94 1.33-2.5L11 14V5c0-.55.45-1 1-1s1 .45 1 1v9l.67.5c.81.56 1.33 1.48 1.33 2.5 0 1.66-1.34 3-3 3z"/></svg>
+                                            </div>
+                                            <div>
+                                                <span class="text-[10px] font-semibold text-apple-subtext block uppercase tracking-wider">Temperatura</span>
+                                                <span id="temp-val" class="text-base font-bold text-apple-text">26°C</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Humidity -->
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-apple-blue">
+                                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                                            </div>
+                                            <div>
+                                                <span class="text-[10px] font-semibold text-apple-subtext block uppercase tracking-wider">Umidade</span>
+                                                <span id="humidity-val" class="text-base font-bold text-apple-text">78%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right Column: Vertical Gradient Progress Bar -->
+                                <div class="w-12 bg-gray-100 rounded-full p-1.5 flex flex-col justify-end items-center relative border border-gray-200/50 shadow-inner">
+                                    <!-- Dynamic Fill -->
+                                    <div id="vertical-bar-fill" class="w-full rounded-full level-bar-gradient transition-all duration-500 glow-blue" style="height: 25%;"></div>
+                                    
+                                    <!-- Level Label overlay -->
+                                    <span id="vertical-bar-label" class="absolute top-3 text-[9px] font-extrabold text-apple-subtext uppercase tracking-tighter text-center leading-tight">
+                                        Alto<br><span class="text-[7px] font-normal opacity-75">(Alert)</span>
+                                    </span>
+                                    <span class="absolute bottom-3 text-[9px] font-extrabold text-white uppercase tracking-tighter">
+                                        Normal
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- HISTORICAL TREND GRAPH CARD -->
+                        <div class="bg-apple-card rounded-3xl p-5 apple-shadow border border-white/80">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-xs font-bold text-apple-text">Evolução de Nível (24h)</span>
+                                <span class="text-[10px] font-semibold text-apple-subtext bg-apple-bg px-2 py-0.5 rounded-full">Hoje</span>
+                            </div>
+
+                            <!-- SVG Line Graph -->
+                            <div class="w-full h-24 relative">
+                                <svg id="trend-svg" class="w-full h-full overflow-visible" viewBox="0 0 300 80" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#007AFF" stop-opacity="0.35"/>
+                                            <stop offset="100%" stop-color="#007AFF" stop-opacity="0.0"/>
+                                        </linearGradient>
+                                    </defs>
+
+                                    <!-- Threshold Reference Line (3.5m Alert) -->
+                                    <line x1="0" y1="28" x2="300" y2="28" stroke="#FF9500" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+
+                                    <!-- Graph Area Fill -->
+                                    <path id="graph-area" d="M0,65 Q50,60 100,50 T200,40 T300,58 L300,80 L0,80 Z" fill="url(#chart-grad)" />
+
+                                    <!-- Graph Line -->
+                                    <path id="graph-line" d="M0,65 Q50,60 100,50 T200,40 T300,58" fill="none" stroke="#007AFF" stroke-width="3" stroke-linecap="round" class="transition-all duration-300"/>
+
+                                    <!-- Current Data Point -->
+                                    <circle id="graph-point" cx="300" cy="58" r="5" fill="#007AFF" stroke="#FFFFFF" stroke-width="2" class="transition-all duration-300"/>
+                                </svg>
+                            </div>
+
+                            <!-- X-Axis Labels -->
+                            <div class="flex justify-between text-[10px] font-semibold text-apple-subtext mt-2 px-1">
+                                <span>00:00</span>
+                                <span>06:00</span>
+                                <span>12:00</span>
+                                <span>18:00</span>
+                                <span>Agora</span>
+                            </div>
+                        </div>
+
+                        <!-- MOBILE LEVEL CONTROL SLIDER (Visible on < md) -->
+                        <div class="bg-apple-card rounded-2xl p-4 apple-shadow border border-white/80 md:hidden">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs font-bold text-apple-text">Simular Nível do Rio</span>
+                                <span id="mobile-slider-val" class="text-xs font-extrabold text-apple-blue">2.1 m</span>
+                            </div>
+                            <input type="range" id="mobile-slider" min="0.5" max="10.0" step="0.1" value="2.1" 
+                                   class="w-full accent-apple-blue cursor-pointer h-2 bg-gray-200 rounded-lg">
+                            <div class="flex justify-between text-[9px] font-bold text-apple-subtext mt-1">
+                                <span>Normal (&lt;2.5m)</span>
+                                <span>Alerta (2.5m-3.5m)</span>
+                                <span>Enchente (&gt;3.5m)</span>
+                            </div>
+                        </div>
+
+                        <!-- BOTTOM PILL ACTION BUTTONS -->
+                        <div class="grid grid-cols-2 gap-3 pt-1">
+                            <button onclick="toggleHistoryModal()" class="py-3.5 px-4 bg-apple-card hover:bg-gray-100 text-apple-text font-bold text-xs rounded-full apple-shadow border border-white/80 transition-all active:scale-95 flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4 fill-current text-apple-subtext" viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8z"/></svg>
+                                Histórico
+                            </button>
+                            <button onclick="toggleSettingsModal()" class="py-3.5 px-4 bg-apple-card hover:bg-gray-100 text-apple-text font-bold text-xs rounded-full apple-shadow border border-white/80 transition-all active:scale-95 flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4 fill-current text-apple-subtext" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                                Ajustes
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- HOME INDICATOR BAR -->
+                    <div class="pb-2 pt-1 flex justify-center bg-apple-bg">
+                        <div class="w-32 h-1 bg-black/30 rounded-full"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- COMPANION APPLE WATCH MOCKUP (Visible on md+ screens) -->
+            <div class="hidden lg:flex flex-col items-center">
+                <div class="text-xs font-bold text-apple-subtext uppercase tracking-widest mb-3 font-mono">Apple Watch Widget</div>
+                
+                <!-- Watch Frame -->
+                <div class="w-[210px] h-[255px] bg-black rounded-[42px] p-3 watch-shadow relative ring-1 ring-white/20 flex flex-col justify-between">
+                    <!-- Digital Crown -->
+                    <div class="absolute -right-2.5 top-12 w-2 h-10 bg-gray-800 rounded-r-md border-l border-gray-900"></div>
+                    <!-- Side Button -->
+                    <div class="absolute -right-2 top-28 w-1.5 h-12 bg-gray-800 rounded-r-xs"></div>
+
+                    <!-- Watch Screen -->
+                    <div class="w-full h-full bg-apple-darkbg rounded-[32px] p-4 flex flex-col justify-between text-white overflow-hidden relative border border-white/10">
+                        
+                        <!-- Top Watch Header -->
+                        <div class="flex justify-between items-center text-[10px] text-gray-400 font-semibold">
+                            <span>Nível do Rio</span>
+                            <span id="watch-status-dot" class="w-2 h-2 rounded-full bg-apple-blue animate-pulse"></span>
+                        </div>
+
+                        <!-- Watch Main Level KPI -->
+                        <div class="my-1">
+                            <span class="text-[10px] text-gray-400 block">Nível Atual</span>
+                            <div class="flex items-baseline gap-1">
+                                <span id="watch-level-num" class="text-3xl font-black text-white">2.1</span>
+                                <span class="text-sm font-bold text-gray-400">m</span>
+                            </div>
+                        </div>
+
+                        <!-- Watch Mini Vertical Bar & Stats -->
+                        <div class="flex items-center justify-between bg-white/10 rounded-xl p-2 backdrop-blur-md">
+                            <div class="text-[9px] space-y-0.5">
+                                <div class="text-gray-300">Temp: <span id="watch-temp" class="text-white font-bold">26°C</span></div>
+                                <div class="text-gray-300">Umid: <span id="watch-humidity" class="text-white font-bold">78%</span></div>
+                            </div>
+                            
+                            <!-- Mini Vertical Level Bar -->
+                            <div class="w-3 h-10 bg-gray-700/80 rounded-full p-0.5 flex flex-col justify-end">
+                                <div id="watch-bar-fill" class="w-full bg-apple-blue rounded-full transition-all duration-300" style="height: 25%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Status Label -->
+                        <div id="watch-status-label" class="text-[9px] font-extrabold uppercase tracking-wider text-apple-blue text-center pt-0.5">
+                            Normal (Azul)
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- HISTÓRICO MODAL -->
+    <div id="modal-history" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-end md:items-center justify-center p-0 md:p-4 transition-opacity">
+        <div class="bg-apple-card w-full max-w-md rounded-t-3xl md:rounded-3xl p-6 apple-shadow border border-white/80 space-y-4 transform transition-transform">
+            <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                <h3 class="text-lg font-bold text-apple-text">Histórico de Medições</h3>
+                <button onclick="toggleHistoryModal()" class="w-7 h-7 bg-apple-bg rounded-full flex items-center justify-center font-bold text-apple-subtext hover:text-apple-text">✕</button>
+            </div>
+            
+            <div class="space-y-3 text-xs max-h-60 overflow-y-auto pr-1">
+                <div class="flex justify-between items-center p-3 bg-apple-bg rounded-xl">
+                    <div>
+                        <div class="font-bold text-apple-text">2.1 m — Normal</div>
+                        <div class="text-[10px] text-apple-subtext">Hoje às 14:30</div>
+                    </div>
+                    <span class="w-3 h-3 rounded-full bg-apple-blue"></span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-apple-bg rounded-xl">
+                    <div>
+                        <div class="font-bold text-apple-text">2.8 m — Alerta</div>
+                        <div class="text-[10px] text-apple-subtext">Hoje às 09:15</div>
+                    </div>
+                    <span class="w-3 h-3 rounded-full bg-apple-orange"></span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-apple-bg rounded-xl">
+                    <div>
+                        <div class="font-bold text-apple-text">4.2 m — Enchente</div>
+                        <div class="text-[10px] text-apple-subtext">Ontem às 22:00</div>
+                    </div>
+                    <span class="w-3 h-3 rounded-full bg-apple-red"></span>
+                </div>
+            </div>
+
+            <button onclick="toggleHistoryModal()" class="w-full py-3 bg-apple-text text-white font-bold text-xs rounded-full">Fechar</button>
+        </div>
+    </div>
+
+    <!-- AJUSTES MODAL -->
+    <div id="modal-settings" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-end md:items-center justify-center p-0 md:p-4 transition-opacity">
+        <div class="bg-apple-card w-full max-w-md rounded-t-3xl md:rounded-3xl p-6 apple-shadow border border-white/80 space-y-4">
+            <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                <h3 class="text-lg font-bold text-apple-text">Ajustes do Sistema</h3>
+                <button onclick="toggleSettingsModal()" class="w-7 h-7 bg-apple-bg rounded-full flex items-center justify-center font-bold text-apple-subtext hover:text-apple-text">✕</button>
+            </div>
+            
+            <div class="space-y-4 text-xs">
+                <div class="flex items-center justify-between">
+                    <span class="font-semibold text-apple-text">Notificações da Defesa Civil</span>
+                    <input type="checkbox" checked class="w-5 h-5 accent-apple-blue cursor-pointer">
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="font-semibold text-apple-text">Sirene de Emergência Automática</span>
+                    <input type="checkbox" checked class="w-5 h-5 accent-apple-blue cursor-pointer">
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="font-semibold text-apple-text">Frequência de Medição</span>
+                    <select class="bg-apple-bg p-2 rounded-lg font-bold text-apple-text outline-none">
+                        <option>A cada 1 minuto</option>
+                        <option selected>A cada 5 minutos</option>
+                        <option>A cada 15 minutos</option>
+                    </select>
+                </div>
+            </div>
+
+            <button onclick="toggleSettingsModal()" class="w-full py-3 bg-apple-text text-white font-bold text-xs rounded-full">Salvar Ajustes</button>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE SCRIPT LOGIC -->
+    <script>
+        // DOM Elements
+        const desktopSlider = document.getElementById('desktop-slider');
+        const desktopVal = document.getElementById('desktop-slider-val');
+        const mobileSlider = document.getElementById('mobile-slider');
+        const mobileVal = document.getElementById('mobile-slider-val');
+
+        const mainNum = document.getElementById('main-level-num');
+        const statusPill = document.getElementById('status-pill');
+        const barFill = document.getElementById('vertical-bar-fill');
+        const islandDot = document.getElementById('island-dot');
+        const islandText = document.getElementById('island-text');
+
+        // Watch Elements
+        const watchNum = document.getElementById('watch-level-num');
+        const watchBarFill = document.getElementById('watch-bar-fill');
+        const watchDot = document.getElementById('watch-status-dot');
+        const watchLabel = document.getElementById('watch-status-label');
+
+        // SVG Graph Elements
+        const graphLine = document.getElementById('graph-line');
+        const graphArea = document.getElementById('graph-area');
+        const graphPoint = document.getElementById('graph-point');
+
+        // Update Clock
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const mins = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').innerText = `${hours}:${mins}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Level Update Handler
+        function setRiverLevel(val) {
+            const level = parseFloat(val).toFixed(1);
+            
+            // Sync Input Controls
+            if (desktopSlider) desktopSlider.value = level;
+            if (mobileSlider) mobileSlider.value = level;
+            if (desktopVal) desktopVal.innerText = `${level} m`;
+            if (mobileVal) mobileVal.innerText = `${level} m`;
+
+            // Text Updates
+            mainNum.innerText = level;
+            if (watchNum) watchNum.innerText = level;
+            islandText.innerText = `LIVE ${level}m`;
+
+            // Percentage Fill for Vertical Bar (Max = 10.0m)
+            const fillPct = Math.min(Math.max((level / 10.0) * 100, 8), 100);
+            barFill.style.height = `${fillPct}%`;
+            if (watchBarFill) watchBarFill.style.height = `${fillPct}%`;
+
+            // State Logic: Normal (< 2.5m), Alerta (2.5m - 3.5m), Alto/Enchente (> 3.5m)
+            let color, stateText, watchText, glowClass;
+
+            if (level < 2.5) {
+                color = '#007AFF'; // Apple Blue
+                stateText = 'Normal';
+                watchText = 'Normal (Azul)';
+                glowClass = 'glow-blue';
+
+                statusPill.className = 'px-3 py-1 rounded-full text-xs font-bold text-white bg-apple-blue transition-colors duration-300 shadow-sm';
+                mainNum.className = 'text-5xl font-black tracking-tight text-apple-text transition-all duration-300';
+            } else if (level >= 2.5 && level <= 3.5) {
+                color = '#FF9500'; // Apple Orange
+                stateText = 'Alerta';
+                watchText = 'Alerta (Laranja)';
+                glowClass = 'glow-orange';
+
+                statusPill.className = 'px-3 py-1 rounded-full text-xs font-bold text-white bg-apple-orange transition-colors duration-300 shadow-sm';
+                mainNum.className = 'text-5xl font-black tracking-tight text-apple-orange transition-all duration-300';
+            } else {
+                color = '#FF3B30'; // Apple Red
+                stateText = 'Alto / Enchente';
+                watchText = 'Alto (Vermelho)';
+                glowClass = 'glow-red';
+
+                statusPill.className = 'px-3 py-1 rounded-full text-xs font-bold text-white bg-apple-red transition-colors duration-300 shadow-sm animate-pulse';
+                mainNum.className = 'text-5xl font-black tracking-tight text-apple-red transition-all duration-300';
+            }
+
+            // Apply Dynamic State Colors
+            statusPill.innerText = stateText;
+            if (islandDot) islandDot.style.backgroundColor = color;
+            if (watchDot) watchDot.style.backgroundColor = color;
+            if (watchLabel) {
+                watchLabel.innerText = watchText;
+                watchLabel.style.color = color;
+            }
+
+            barFill.className = `w-full rounded-full level-bar-gradient transition-all duration-500 ${glowClass}`;
+
+            // Dynamic SVG Graph Point Update
+            // Y Mapping: 0.5m -> Y=70, 10.0m -> Y=10
+            const graphY = 75 - Math.min((level / 10.0) * 65, 65);
+            graphPoint.setAttribute('cy', graphY);
+            graphPoint.setAttribute('fill', color);
+            graphLine.setAttribute('stroke', color);
+
+            const areaPath = `M0,65 Q50,60 100,50 T200,40 T300,${graphY} L300,80 L0,80 Z`;
+            const linePath = `M0,65 Q50,60 100,50 T200,40 T300,${graphY}`;
+            
+            graphArea.setAttribute('d', areaPath);
+            graphLine.setAttribute('d', linePath);
+        }
+
+        // Event Listeners
+        if (desktopSlider) {
+            desktopSlider.addEventListener('input', (e) => setRiverLevel(e.target.value));
+        }
+        if (mobileSlider) {
+            mobileSlider.addEventListener('input', (e) => setRiverLevel(e.target.value));
+        }
+
+        // Modal Handlers
+        function toggleHistoryModal() {
+            const modal = document.getElementById('modal-history');
+            modal.classList.toggle('hidden');
+        }
+
+        function toggleSettingsModal() {
+            const modal = document.getElementById('modal-settings');
+            modal.classList.toggle('hidden');
+        }
+
+        // Initialize at 2.1m
+        setRiverLevel(2.1);
+    </script>
+</body>
+</html>
